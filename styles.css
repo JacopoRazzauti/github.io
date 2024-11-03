@@ -4,7 +4,8 @@ body {
     margin: 0;
     padding: 0;
     color: #0c2d48;
-    background: linear-gradient(to bottom right, #b1d4e0, #145da0);
+    background-size: cover;
+    background-position: center;
     overflow-x: hidden;
 }
 
@@ -100,25 +101,3 @@ main {
     background-color: #0c2d48;
 }
 
-/* Quote Styling */
-.quote {
-    position: fixed;
-    font-style: italic;
-    font-size: 1em;
-    color: #0c2d48;
-    opacity: 0.8;
-}
-
-/* Footer Styling */
-footer {
-    background-color: #145da0;
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
-    width: 100%;
-}
-
-/* Show Menu when Open */
-#menu.show {
-    display: flex;
-}

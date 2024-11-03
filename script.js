@@ -8,24 +8,21 @@ const quotes = [
     "'The story so far: In the beginning the Universe was created. This has made a lot of people very angry and been widely regarded as a bad move.' – Douglas Adams",
 ];
 
-// Function to display a random quote in a random position
+// Array of background images (update paths to your image files)
+const backgrounds = [
+    'images/background1.jpg',
+    'images/background2.jpg',
+    'images/background3.jpg',
+    'images/background4.jpg',
+    // Add more images as desired
+];
+
+// Function to display a random quote in a random position along the bottom
 function displayRandomQuote() {
     const quoteElement = document.getElementById("quote");
     const randomIndex = Math.floor(Math.random() * quotes.length);
     quoteElement.textContent = quotes[randomIndex];
 
-    // Set random position
+    // Set random horizontal position within the viewport width
     const randomX = Math.floor(Math.random() * (window.innerWidth - 200));
-    const randomY = Math.floor(Math.random() * (window.innerHeight - 50));
-    quoteElement.style.left = `${randomX}px`;
-    quoteElement.style.bottom = `${randomY}px`;
-}
-
-// Function to toggle the menu visibility
-function toggleMenu() {
-    const menu = document.getElementById("menu");
-    menu.classList.toggle("show");
-}
-
-// Call the function on page load
-window.onload = displayRandomQuote;
+    quoteEl
