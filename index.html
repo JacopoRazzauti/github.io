@@ -29,24 +29,20 @@
     </footer>
 
     <script>
-        // Array of quotes
         const quotes = [
-            "I love deadlines. I love the whooshing noise they make as they go by. – Douglas Adams",
-            "I refuse to answer that question on the grounds that I don't know the answer. – Douglas Adams",
-            "Don't Panic. – Douglas Adams",
-            "Time is an illusion. Lunchtime doubly so. – Douglas Adams",
-            "A common mistake that people make when trying to design something completely foolproof is to underestimate the ingenuity of complete fools. – Douglas Adams",
+            "The only limit to our realization of tomorrow is our doubts of today. – Franklin D. Roosevelt",
+            "Success is not the key to happiness. Happiness is the key to success. – Albert Schweitzer",
+            "Life is what happens when you're busy making other plans. – John Lennon",
+            "The best way to predict the future is to invent it. – Alan Kay",
+            "Do what you can, with what you have, where you are. – Theodore Roosevelt",
             "In the end, we only regret the chances we didn’t take. – Lewis Carroll"
-            // Add more quotes as desired
         ];
 
-        // Function to display a random quote
         function displayRandomQuote() {
             const randomIndex = Math.floor(Math.random() * quotes.length);
             document.getElementById("quote").textContent = quotes[randomIndex];
         }
 
-        // Call the function on page load
         window.onload = displayRandomQuote;
     </script>
 </body>

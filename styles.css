@@ -1,45 +1,54 @@
 /* General Styling */
 body {
-    font-family: 'Garamond', serif;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    color: #0c2d48; /* Dark Blue */
-    background-color: #b1d4e0; /* Baby Blue */
+    color: rgba(12, 45, 72, 0.85); /* Dark Blue with opacity */
+    background: linear-gradient(to bottom right, rgba(177, 212, 224, 0.5), rgba(20, 93, 160, 0.3)); /* Gradient with opacity */
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-x: hidden;
 }
 
 /* Header Styling */
 header {
-    background-color: #145da0; /* Midnight Blue */
-    color: #fff;
+    background-color: rgba(20, 93, 160, 0.7); /* Midnight Blue with opacity */
+    color: rgba(255, 255, 255, 0.9);
     text-align: center;
     padding: 20px 0;
     width: 100%;
+    transition: background-color 0.3s ease;
 }
 
 header h1 {
-    margin: 0;
     font-size: 2.5em;
+    margin: 0;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
 }
 
-/* Navigation Menu Styling */
+header h1:hover {
+    opacity: 1;
+}
+
 nav {
     margin-top: 10px;
 }
 
 nav a {
     text-decoration: none;
-    color: #b1d4e0; /* Baby Blue */
+    color: rgba(255, 255, 255, 0.9);
     margin: 0 15px;
     font-weight: bold;
     font-size: 1.1em;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, opacity 0.3s ease;
+    opacity: 0.8;
 }
 
 nav a:hover {
-    color: #2e8bc0; /* Blue */
+    color: rgba(46, 139, 192, 1); /* Blue */
+    opacity: 1;
 }
 
 /* Main Section Styling */
@@ -49,52 +58,87 @@ main {
     align-items: center;
     text-align: center;
     padding: 50px 20px;
-    width: 80%;
+    width: 90%;
+    backdrop-filter: blur(5px); /* Slight blur for a glassy effect */
 }
 
 .intro {
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: rgba(12, 45, 72, 0.85);
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 15px;
     padding: 40px;
     max-width: 600px;
-    color: #0c2d48; /* Dark Blue */
-    animation: fadeIn 1.5s ease;
+    backdrop-filter: blur(5px);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.intro:hover {
+    background: rgba(255, 255, 255, 0.6);
+    transform: scale(1.02);
 }
 
 .intro p {
     font-size: 1.2em;
     line-height: 1.6;
+    opacity: 0.85;
+    transition: opacity 0.3s ease;
+}
+
+.intro p:hover {
+    opacity: 1;
 }
 
 .intro button {
-    background-color: #145da0; /* Midnight Blue */
-    color: #fff;
+    background-color: rgba(20, 93, 160, 0.7); /* Midnight Blue */
+    color: rgba(255, 255, 255, 0.9);
     border: none;
     padding: 10px 20px;
     font-size: 1em;
     border-radius: 5px;
     cursor: pointer;
     margin-top: 20px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    opacity: 0.85;
 }
 
 .intro button:hover {
-    background-color: #0c2d48; /* Dark Blue */
+    background-color: rgba(12, 45, 72, 0.9); /* Darker Midnight Blue */
+    transform: scale(1.05);
+    opacity: 1;
+}
+
+/* Quote Styling */
+.quote {
+    font-style: italic;
+    font-size: 1.1em;
+    color: rgba(12, 45, 72, 0.75);
+    margin-top: 20px;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.quote:hover {
+    opacity: 1;
 }
 
 /* Footer Styling */
 footer {
-    background-color: #145da0; /* Midnight Blue */
-    color: #fff;
+    background-color: rgba(20, 93, 160, 0.7); /* Midnight Blue with opacity */
+    color: rgba(255, 255, 255, 0.9);
     text-align: center;
     padding: 15px 0;
     width: 100%;
     position: fixed;
     bottom: 0;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
 }
 
-/* Animation */
+footer:hover {
+    opacity: 1;
+}
+
+/* Smooth Fade-in Animation */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
