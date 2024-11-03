@@ -13,7 +13,7 @@ body {
     color: #fff;
 }
 
-/* Main Circle Styling (Further Increased Size) */
+/* Main Circle Styling */
 .main-circle {
     position: relative;
     background: rgba(255, 255, 255, 0.1);
@@ -37,7 +37,109 @@ body {
     margin-bottom: 10px;
 }
 
-/* Mosquito Styles */
+/* Navigation Circles */
+.nav-circles {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
+    margin-top: 200px;
+}
+
+.nav-circle {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+    animation: jitter 6s infinite alternate ease-in-out;
+}
+
+/* Image Bubbles Styling */
+.image-bubbles, .top-left-bubbles {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.image-bubbles {
+    position: fixed;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.top-left-bubbles {
+    position: fixed;
+    left: 40px;
+    top: 40px;
+}
+
+.image-bubble {
+    position: relative;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    animation: jitter 5s infinite alternate ease-in-out;
+}
+
+.image-bubble img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* Icon Inside Image Bubble on Hover */
+.icon {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 2em;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.image-bubble:hover .icon {
+    opacity: 1;
+}
+
+/* Quote Circle Styling */
+.quote-circle {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-style: italic;
+    color: #fff;
+    padding: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Mosquito Styling */
 .mosquito {
     position: absolute;
     width: 20px;
@@ -50,34 +152,21 @@ body {
 
 /* Flying Animation */
 @keyframes fly {
-    0% {
-        transform: translate(0, 0) rotate(0deg);
-    }
-    25% {
-        transform: translate(50px, -50px) rotate(45deg);
-    }
-    50% {
-        transform: translate(100px, 50px) rotate(90deg);
-    }
-    75% {
-        transform: translate(-50px, -100px) rotate(135deg);
-    }
-    100% {
-        transform: translate(0, 0) rotate(180deg);
-    }
+    0% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(50px, -50px) rotate(45deg); }
+    50% { transform: translate(100px, 50px) rotate(90deg); }
+    75% { transform: translate(-50px, -100px) rotate(135deg); }
+    100% { transform: translate(0, 0) rotate(180deg); }
 }
 
-/* Footer Styling */
-footer {
-    display: none;
+/* Jitter Animation */
+@keyframes jitter {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(-3px, 3px); }
+    100% { transform: translate(3px, -3px); }
 }
 
-footer,
-footer p {
-    font-size: 0.9em;
-    color: #fff;
-}
-
+/* Copyright Text */
 .copyright {
     position: fixed;
     bottom: 10px;
