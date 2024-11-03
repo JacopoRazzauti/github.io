@@ -10,10 +10,10 @@ const quotes = [
 
 // Array of background images (update paths to your image files)
 const backgrounds = [
-    'images\background1.jpg',
-    'images\background2.jpg',
-    'images\background3.jpg',
-    'images\background4.jpg',
+    'images/background1.jpg',
+    'images/background2.jpg',
+    'images/background3.jpg',
+    'images/background4.jpg',
     // Add more images as desired
 ];
 
@@ -25,4 +25,23 @@ function displayRandomQuote() {
 
     // Set random horizontal position within the viewport width
     const randomX = Math.floor(Math.random() * (window.innerWidth - 200));
-    quoteEl
+    quoteElement.style.left = `${randomX}px`;
+}
+
+// Function to set a random background image
+function setRandomBackground() {
+    const randomIndex = Math.floor(Math.random() * backgrounds.length);
+    document.body.style.backgroundImage = `url('${backgrounds[randomIndex]}')`;
+}
+
+// Function to toggle the menu visibility
+function toggleMenu() {
+    const menu = document.getElementById("menu");
+    menu.classList.toggle("show");
+}
+
+// Call functions on page load
+window.onload = () => {
+    displayRandomQuote();
+    setRandomBackground();
+};
