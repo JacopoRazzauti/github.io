@@ -8,23 +8,46 @@
 </head>
 <body>
     <header>
-        <h1>Welcome to My Website</h1>
+        <h1>Who is this Jacopo Razzauti anyway?</h1>
         <nav>
             <a href="index.html">Home</a>
-            <a href="biography.html">Biography</a>
-            <a href="biology.html">Biology</a>
+            <a href="biography.html">Bio(graphy)</a>
+            <a href="biology.html">Bio(logy)</a>
             <a href="cv.html">CV</a>
-            <a href="contacts.html">Contacts</a>
+            <a href="contacts.html">Reach out</a>
         </nav>
     </header>
     <main>
         <section class="intro">
-            <p>Hello! This is my first GitHub Pages website. Here, you’ll find information about me, my interests, and my professional experience.</p>
-            <button onclick="window.location.href='biography.html'">Learn More About Me</button>
+            <p>Greetings! This is my personal webpage. I created it as I was bored on a Sunday morning. In case you are interested in who I am or what I do, feel free to explore more.</p>
+            <button onclick="window.location.href='biography.html'">Who I am</button>
+            <p class="quote" id="quote"></p>
         </section>
     </main>
     <footer>
-        <p>&copy; 2024 My Website</p>
+        <p>&copy; 2024 Jacopo Razzauti</p>
     </footer>
+
+    <script>
+        // Array of quotes
+        const quotes = [
+            "I love deadlines. I love the whooshing noise they make as they go by. – Douglas Adams",
+            "I refuse to answer that question on the grounds that I don't know the answer. – Douglas Adams",
+            "Don't Panic. – Douglas Adams",
+            "Time is an illusion. Lunchtime doubly so. – Douglas Adams",
+            "A common mistake that people make when trying to design something completely foolproof is to underestimate the ingenuity of complete fools. – Douglas Adams",
+            "In the end, we only regret the chances we didn’t take. – Lewis Carroll"
+            // Add more quotes as desired
+        ];
+
+        // Function to display a random quote
+        function displayRandomQuote() {
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            document.getElementById("quote").textContent = quotes[randomIndex];
+        }
+
+        // Call the function on page load
+        window.onload = displayRandomQuote;
+    </script>
 </body>
 </html>
