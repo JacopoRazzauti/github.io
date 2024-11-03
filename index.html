@@ -8,24 +8,17 @@
     <script defer src="script.js"></script>
 </head>
 <body>
-    <header>
+    <div class="main-circle">
         <h1>Who is this Jacopo Razzauti anyway?</h1>
-        <div class="menu-icon" onclick="toggleMenu()">☰</div>
-        <nav id="menu">
-            <a href="index.html">Home</a>
-            <a href="biography.html">Bio(graphy)</a>
-            <a href="biology.html">Bio(logy)</a>
-            <a href="cv.html">CV</a>
-            <a href="contacts.html">Reach out</a>
-        </nav>
-    </header>
-    <main>
-        <section class="intro">
-            <p>Greetings! This is my personal webpage. I created it as I was bored on a Sunday morning. In case you are interested in who I am or what I do, feel free to explore more.</p>
-            <button onclick="window.location.href='biography.html'">Who I am</button>
-        </section>
-        <p class="quote" id="quote"></p>
-    </main>
+        <p>Greetings! This is my personal webpage. I created it as I was bored on a Sunday morning. In case you are interested in who I am or what I do, feel free to explore more.</p>
+        <div class="nav-circles">
+            <a href="biography.html" class="nav-circle">Bio(graphy)</a>
+            <a href="biology.html" class="nav-circle">Bio(logy)</a>
+            <a href="cv.html" class="nav-circle">CV</a>
+            <a href="contacts.html" class="nav-circle">Reach out</a>
+        </div>
+    </div>
+    <div class="quote-circle" id="quote"></div>
     <footer>
         <p>&copy; 2024 Jacopo Razzauti</p>
     </footer>

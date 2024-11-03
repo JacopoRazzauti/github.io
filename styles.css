@@ -3,101 +3,119 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    color: #0c2d48;
     background-size: cover;
     background-position: center;
-    overflow-x: hidden;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #fff;
 }
 
-/* Header Styling */
-header {
+/* Main Circle Styling */
+.main-circle {
+    position: relative;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.main-circle h1 {
+    font-size: 1.5em;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.main-circle:hover {
+    transform: scale(1.05);
+}
+
+/* Navigation Circles */
+.nav-circles {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
+    margin-top: 200px;
+}
+
+.nav-circle {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    position: relative;
-}
-
-header h1 {
-    font-size: 1.8em;
-    color: #145da0;
-    margin: 0;
-    font-weight: bold;
-    text-align: left;
-}
-
-.menu-icon {
-    font-size: 1.5em;
-    cursor: pointer;
-    color: #0c2d48;
-}
-
-/* Collapsible Menu */
-nav {
-    position: fixed;
-    right: 0;
-    top: 0;
-    height: 100%;
-    width: 250px;
-    background-color: rgba(12, 45, 72, 0.9);
-    display: none;
-    flex-direction: column;
-    padding: 20px;
-    box-shadow: -3px 0px 5px rgba(0, 0, 0, 0.2);
-    overflow-y: auto;
-}
-
-nav a {
-    color: #b1d4e0;
-    text-decoration: none;
-    margin: 15px 0;
-    font-size: 1.2em;
-    transition: color 0.3s ease;
-}
-
-nav a:hover {
-    color: #2e8bc0;
-}
-
-/* Main Section Styling */
-main {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 50px 20px;
-    max-width: 600px;
-}
-
-.intro {
-    color: #0c2d48;
-    background: rgba(255, 255, 255, 0.7);
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: background 0.3s ease;
-}
-
-.intro p {
-    font-size: 1.2em;
-    line-height: 1.6;
-    margin: 0;
-    opacity: 0.9;
-    transition: opacity 0.3s ease;
-}
-
-.intro button {
-    background-color: #145da0;
+    justify-content: center;
+    text-align: center;
     color: #fff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1em;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 20px;
-    transition: background-color 0.3s ease;
+    font-weight: bold;
+    text-decoration: none;
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-.intro button:hover {
-    background-color: #0c2d48;
+.nav-circle:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    transform: scale(1.1);
 }
 
+/* Bubble Effect for Main Circle */
+.main-circle:hover .nav-circle {
+    animation: wiggle 0.3s infinite alternate;
+}
+
+@keyframes wiggle {
+    from {
+        transform: translateY(-2px);
+    }
+    to {
+        transform: translateY(2px);
+    }
+}
+
+/* Quote Circle Styling */
+.quote-circle {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-style: italic;
+    color: #fff;
+    padding: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer Styling */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(20, 93, 160, 0.8);
+    text-align: center;
+    padding: 10px;
+    color: #fff;
+    font-size: 0.9em;
+}

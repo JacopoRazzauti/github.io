@@ -17,27 +17,17 @@ const backgrounds = [
     // Add more images as desired
 ];
 
-// Function to display a random quote in a random position along the bottom
+// Function to display a random quote
 function displayRandomQuote() {
     const quoteElement = document.getElementById("quote");
     const randomIndex = Math.floor(Math.random() * quotes.length);
     quoteElement.textContent = quotes[randomIndex];
-
-    // Set random horizontal position within the viewport width
-    const randomX = Math.floor(Math.random() * (window.innerWidth - 200));
-    quoteElement.style.left = `${randomX}px`;
 }
 
 // Function to set a random background image
 function setRandomBackground() {
     const randomIndex = Math.floor(Math.random() * backgrounds.length);
     document.body.style.backgroundImage = `url('${backgrounds[randomIndex]}')`;
-}
-
-// Function to toggle the menu visibility
-function toggleMenu() {
-    const menu = document.getElementById("menu");
-    menu.classList.toggle("show");
 }
 
 // Call functions on page load
