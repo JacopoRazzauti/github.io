@@ -13,14 +13,14 @@ body {
     color: #fff;
 }
 
-/* Main Circle Styling (Increased Size) */
+/* Main Circle Styling (Further Increased Size) */
 .main-circle {
     position: relative;
     background: rgba(255, 255, 255, 0.1);
     border: 2px solid rgba(255, 255, 255, 0.3);
     border-radius: 50%;
-    width: 350px;
-    height: 350px;
+    width: 400px;
+    height: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -28,16 +28,13 @@ body {
     text-align: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease;
+    animation: jitter 4s infinite alternate ease-in-out;
 }
 
 .main-circle h1 {
     font-size: 1.5em;
     color: #fff;
     margin-bottom: 10px;
-}
-
-.main-circle:hover {
-    transform: scale(1.05);
 }
 
 /* Navigation Circles */
@@ -48,7 +45,7 @@ body {
     transform: translate(-50%, -50%);
     display: flex;
     justify-content: space-between;
-    width: 400px;
+    width: 450px;
     margin-top: 220px;
 }
 
@@ -66,25 +63,12 @@ body {
     font-weight: bold;
     text-decoration: none;
     transition: transform 0.3s ease, background-color 0.3s ease;
+    animation: jitter 6s infinite alternate ease-in-out;
 }
 
 .nav-circle:hover {
     background-color: rgba(255, 255, 255, 0.4);
     transform: scale(1.1);
-}
-
-/* Wiggle Effect for Main Circle */
-.main-circle:hover .nav-circle {
-    animation: wiggle 0.3s infinite alternate;
-}
-
-@keyframes wiggle {
-    from {
-        transform: translateY(-2px);
-    }
-    to {
-        transform: translateY(2px);
-    }
 }
 
 /* Image Bubbles on the Right */
@@ -111,6 +95,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    animation: jitter 5s infinite alternate ease-in-out;
 }
 
 .image-bubble img {
@@ -122,6 +107,29 @@ body {
 
 .image-bubble:hover {
     transform: scale(1.1);
+}
+
+/* New Bubbles in the Top Left Corner */
+.top-left-bubbles {
+    position: fixed;
+    left: 40px;
+    top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.top-left-bubbles .image-bubble {
+    width: 80px;
+    height: 80px;
+    animation: jitter 7s infinite alternate ease-in-out;
+}
+
+/* Jitter Animation */
+@keyframes jitter {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(-3px, 3px); }
+    100% { transform: translate(3px, -3px); }
 }
 
 /* Icon Inside Image Bubble on Hover */
@@ -157,6 +165,7 @@ body {
     color: #fff;
     padding: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    animation: jitter 6s infinite alternate ease-in-out;
 }
 
 /* Footer Styling */
