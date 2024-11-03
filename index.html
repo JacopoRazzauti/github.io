@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Website</title>
     <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
 </head>
 <body>
     <header>
         <h1>Who is this Jacopo Razzauti anyway?</h1>
-        <nav>
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <nav id="menu">
             <a href="index.html">Home</a>
             <a href="biography.html">Bio(graphy)</a>
             <a href="biology.html">Bio(logy)</a>
@@ -21,29 +23,11 @@
         <section class="intro">
             <p>Greetings! This is my personal webpage. I created it as I was bored on a Sunday morning. In case you are interested in who I am or what I do, feel free to explore more.</p>
             <button onclick="window.location.href='biography.html'">Who I am</button>
-            <p class="quote" id="quote"></p>
         </section>
+        <p class="quote" id="quote"></p>
     </main>
     <footer>
         <p>&copy; 2024 Jacopo Razzauti</p>
     </footer>
-
-    <script>
-        const quotes = [
-            "The only limit to our realization of tomorrow is our doubts of today. – Franklin D. Roosevelt",
-            "Success is not the key to happiness. Happiness is the key to success. – Albert Schweitzer",
-            "Life is what happens when you're busy making other plans. – John Lennon",
-            "The best way to predict the future is to invent it. – Alan Kay",
-            "Do what you can, with what you have, where you are. – Theodore Roosevelt",
-            "In the end, we only regret the chances we didn’t take. – Lewis Carroll"
-        ];
-
-        function displayRandomQuote() {
-            const randomIndex = Math.floor(Math.random() * quotes.length);
-            document.getElementById("quote").textContent = quotes[randomIndex];
-        }
-
-        window.onload = displayRandomQuote;
-    </script>
 </body>
 </html>
