@@ -1,0 +1,77 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url('your-selected-image.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+.timeline-container {
+    display: flex;
+    justify-content: center;
+    padding: 50px 0;
+}
+
+.timeline {
+    position: relative;
+    width: 3px;
+    background-color: #fff;
+    height: 100vh;
+}
+
+/* Milestones */
+.milestone {
+    position: relative;
+    margin: 50px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+}
+
+.milestone .year {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.milestone .description {
+    max-width: 200px;
+    text-align: left;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+}
+
+.milestone:nth-child(odd) .description {
+    position: absolute;
+    left: 20px;
+}
+
+.milestone:nth-child(even) .description {
+    position: absolute;
+    right: 20px;
+}
+
+.milestone:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Branch lines */
+.milestone:nth-child(odd):before {
+    left: -20px;
+}
+
+.milestone:nth-child(even):before {
+    right: -20px;
+}
