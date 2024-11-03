@@ -10,10 +10,10 @@ const quotes = [
 
 // Array of background images (update paths to your image files)
 const backgrounds = [
-    'images/background1.jpg',
-    'images/background2.jpg',
-    'images/background3.jpg',
-    'images/background4.jpg',
+    'images\background1.jpg',
+    'images\background2.jpg',
+    'images\background3.jpg',
+    'images\background4.jpg',
     // Add more images as desired
 ];
 
