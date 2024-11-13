@@ -3,32 +3,45 @@ body {
     font-family: 'Inter', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: url('scorpion.jpg') no-repeat center center fixed;
-    background-size: cover;
-    background-attachment: fixed; /* This ensures the background stays fixed while scrolling */
     color: #fff;
     min-height: 100vh;
     position: relative;
     overflow-x: hidden;
 }
 
-/* Add a dark overlay to make text more readable */
-body::before {
-    content: '';
+/* Background Setup */
+.background-wrapper {
     position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: url('images/scorpion.jpg') no-repeat center center;
+    background-size: cover;
+    z-index: -2;
+}
+
+.background-wrapper::after {
+    content: '';
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.3);
-    z-index: -1;
 }
 
-/* Update menu position to right side */
+/* Content Wrapper */
+.content-wrapper {
+    position: relative;
+    z-index: 1;
+}
+
+/* Navigation Menu */
 .menu-icon {
     position: fixed;
     top: 20px;
-    right: 20px; /* Changed from left to right */
+    right: 20px;
     font-size: 1.5em;
     color: #fff;
     cursor: pointer;
@@ -53,7 +66,7 @@ body::before {
 nav {
     position: fixed;
     top: 0;
-    right: -300px; /* Changed from left to right */
+    right: -300px;
     height: 100%;
     width: 250px;
     background: rgba(255, 255, 255, 0.1);
@@ -88,26 +101,17 @@ nav a:hover {
     transform: translateX(-10px);
 }
 
-/* Timeline Container adjusted for right-side menu */
-.timeline-container {
-    display: flex;
-    justify-content: center;
-    padding: 50px 0;
-    margin-right: 15vw; /* Changed from margin-left to margin-right */
-    position: relative;
-}
-
-
 /* Timeline Container */
 .timeline-container {
     display: flex;
     justify-content: center;
     padding: 50px 0;
-    margin-left: 15vw;
+    margin: 0 auto;
+    max-width: 1200px;
     position: relative;
 }
 
-/* Timeline Styling */
+/* Timeline */
 .timeline {
     position: relative;
     width: 3px;
@@ -117,26 +121,25 @@ nav a:hover {
     z-index: 1;
 }
 
-/* Milestone Styling with Improved Spacing */
+/* Milestone Styling */
 .milestone {
     position: relative;
     margin: 180px 0;
     display: flex;
     align-items: center;
     width: 100%;
-    padding: 0 50px; /* Added padding to prevent overlap */
+    padding: 0 50px;
 }
 
-/* Even/Odd milestone positioning */
 .milestone:nth-child(odd) {
     flex-direction: row;
-    padding-left: 100px; /* Increased padding for better spacing */
+    padding-left: 100px;
     padding-right: 30px;
 }
 
 .milestone:nth-child(even) {
     flex-direction: row-reverse;
-    padding-right: 100px; /* Increased padding for better spacing */
+    padding-right: 100px;
     padding-left: 30px;
 }
 
@@ -150,11 +153,12 @@ nav a:hover {
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
     animation: jitter 6s infinite alternate ease-in-out;
-    margin: 0 30px; /* Added margin to prevent timeline overlap */
+    margin: 0 30px;
 }
 
 .milestone-image-container {
     width: 400px;
+    min-height: 300px;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(8px);
     border: 2px solid rgba(255, 255, 255, 0.3);
@@ -162,10 +166,29 @@ nav a:hover {
     overflow: hidden;
     transition: all 0.3s ease;
     animation: jitter 7s infinite alternate ease-in-out;
-    margin: 0 30px; /* Added margin to prevent timeline overlap */
+    margin: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Timeline dots with improved positioning */
+.milestone-image {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.milestone-image img {
+    max-width: 100%;
+    max-height: 280px;
+    object-fit: contain;
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+}
+
 .milestone::before {
     content: "";
     position: absolute;
@@ -180,31 +203,14 @@ nav a:hover {
 }
 
 .milestone:nth-child(odd)::before {
-    left: 91px; /* Adjusted to align with timeline */
+    left: 91px;
 }
 
 .milestone:nth-child(even)::before {
-    right: 91px; /* Adjusted to align with timeline */
+    right: 91px;
 }
 
-/* Rest of your existing styles remain the same */
-.milestone-image {
-    width: 100%;
-    height: 100%;
-    padding: 10px;
-}
-
-.milestone-image img {
-    width: 100%;
-    height: auto;
-    border-radius: 15px;
-    transition: transform 0.3s ease;
-}
-
-.milestone-image:hover img {
-    transform: scale(1.05);
-}
-
+/* Text Styling */
 .year {
     font-size: 1.4em;
     font-weight: bold;
@@ -219,12 +225,57 @@ nav a:hover {
     color: rgba(255, 255, 255, 0.9);
 }
 
-/* Hover effects */
+.description a {
+    color: #b1d4e0;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.description a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* Bio Box */
+.bio-box {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    max-width: 350px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    padding: 25px;
+    border-radius: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    z-index: 5;
+    transition: all 0.3s ease;
+    animation: jitter 8s infinite alternate ease-in-out;
+}
+
+.bio-box:hover {
+    transform: scale(1.02);
+    border-color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.bio-box p {
+    margin: 0;
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Hover Effects */
 .milestone-content:hover,
 .milestone-image-container:hover {
     transform: scale(1.02);
     border-color: rgba(255, 255, 255, 0.5);
     background: rgba(255, 255, 255, 0.15);
+}
+
+.milestone-image:hover img {
+    transform: scale(1.05);
 }
 
 /* Animations */
@@ -263,7 +314,7 @@ nav a:hover {
 
 @media (max-width: 768px) {
     .timeline-container {
-        margin-left: 5vw;
+        margin: 0 20px;
     }
 
     .milestone {
@@ -281,6 +332,4 @@ nav a:hover {
 
     .milestone::before {
         left: 50% !important;
-        transform: translateX(-50%) !important;
-    }
-}
+        transform:
