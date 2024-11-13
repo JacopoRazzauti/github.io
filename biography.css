@@ -9,7 +9,21 @@ body {
     overflow-x: hidden;
 }
 
+/* Add to your existing biography.css */
+nav {
+    right: 0;
+    left: auto;
+    transform-origin: right center;
+}
 
+nav.show {
+    transform: rotate(-90deg) translateX(0);
+}
+
+.timeline-container {
+    margin-right: 15vw;
+    margin-left: 0;
+}
 
 /* Timeline Container */
 .timeline-container {

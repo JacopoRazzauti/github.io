@@ -1,4 +1,3 @@
-// Ocean Animation Class
 class OceanBackground {
     constructor() {
         this.createFishSchools();

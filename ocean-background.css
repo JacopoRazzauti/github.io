@@ -79,21 +79,3 @@ body::after {
         opacity: 0;
     }
 }
-
-/* Update menu position */
-nav {
-    right: 0;
-    left: auto;
-    transform-origin: right center;
-}
-
-nav.show {
-    transform: rotate(-90deg) translateX(0);
-}
-
-/* Adjust timeline for reverse chronological order */
-.timeline-container {
-    margin-right: 15vw;
-    margin-left: 0;
-}
-
