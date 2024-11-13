@@ -332,4 +332,48 @@ nav a:hover {
 
     .milestone::before {
         left: 50% !important;
-        transform:
+        transform: translate(-50%, -50%) !important;
+    }
+
+    .bio-box {
+        position: relative;
+        left: auto;
+        bottom: auto;
+        max-width: 280px;
+        margin: 40px auto;
+    }
+}
+
+/* Loading States */
+.milestone-image img {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.milestone-image img.loaded {
+    opacity: 1;
+}
+
+/* Print Styles */
+@media print {
+    .menu-icon,
+    nav {
+        display: none;
+    }
+
+    .background-wrapper {
+        display: none;
+    }
+
+    body {
+        color: #000;
+    }
+
+    .milestone-content,
+    .bio-box {
+        background: none;
+        border: 1px solid #000;
+        box-shadow: none;
+        animation: none;
+    }
+}

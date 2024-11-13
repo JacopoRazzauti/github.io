@@ -1,18 +1,15 @@
-// Configuration object for animations and effects
+// Configuration object
 const CONFIG = {
     menu: {
-        animationDelay: 100, // Delay between each menu item animation (ms)
+        animationDelay: 100,
     },
     scroll: {
-        duration: 1000,     // Duration of smooth scroll animation (ms)
-        easing: t => t<.5 ? 4*t*t*t : (t-1)*(2*t-2)*(2*t-2)+1 // Cubic easing function
-    },
-    parallax: {
-        speed: 0.5         // Background parallax speed
+        duration: 1000,
+        easing: t => t<.5 ? 4*t*t*t : (t-1)*(2*t-2)*(2*t-2)+1
     },
     milestone: {
-        threshold: 0.1,    // Intersection observer threshold
-        fadeDelay: 100     // Delay between milestone animations (ms)
+        threshold: 0.1,
+        fadeDelay: 100
     }
 };
 
@@ -29,6 +26,12 @@ class NavigationMenu {
     init() {
         this.menuButton.addEventListener('click', () => this.toggleMenu());
         this.setupMenuLinks();
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (this.isOpen && !this.menu.contains(e.target) && !this.menuButton.contains(e.target)) {
+                this.toggleMenu();
+            }
+        });
     }
 
     toggleMenu() {
@@ -81,6 +84,35 @@ class NavigationMenu {
         };
 
         requestAnimationFrame(animation);
+    }
+}
+
+// Image handling
+class ImageHandler {
+    constructor() {
+        this.images = document.querySelectorAll('.milestone-image img');
+        this.init();
+    }
+
+    init() {
+        this.images.forEach(img => {
+            img.addEventListener('load', () => this.handleImageLoad(img));
+            img.addEventListener('error', () => this.handleImageError(img));
+            
+            // If image is already cached
+            if (img.complete) {
+                this.handleImageLoad(img);
+            }
+        });
+    }
+
+    handleImageLoad(img) {
+        img.classList.add('loaded');
+    }
+
+    handleImageError(img) {
+        img.src = 'images/placeholder.jpg'; // Fallback image
+        img.alt = 'Image not available';
     }
 }
 
@@ -149,71 +181,11 @@ class MilestoneAnimator {
     }
 }
 
-// Background parallax effect
-class ParallaxBackground {
-    constructor() {
-        this.ticking = false;
-        this.init();
-    }
-
-    init() {
-        window.addEventListener('scroll', () => this.handleScroll());
-    }
-
-    handleScroll() {
-        if (!this.ticking) {
-            window.requestAnimationFrame(() => {
-                const scrolled = window.pageYOffset;
-                document.body.style.backgroundPositionY = 
-                    -(scrolled * CONFIG.parallax.speed) + 'px';
-                this.ticking = false;
-            });
-            this.ticking = true;
-        }
-    }
-}
-
-// Bio box effects
-class BioBox {
-    constructor() {
-        this.bioBox = document.querySelector('.bio-box');
-        if (this.bioBox) this.init();
-    }
-
-    init() {
-        window.addEventListener('mousemove', (e) => this.handleMouseMove(e));
-    }
-
-    handleMouseMove(e) {
-        const rect = this.bioBox.getBoundingClientRect();
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
-        const deltaX = e.clientX - centerX;
-        const deltaY = e.clientY - centerY;
-        
-        const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-        const maxDistance = Math.sqrt(
-            window.innerWidth * window.innerWidth + 
-            window.innerHeight * window.innerHeight
-        );
-        
-        const intensity = 1 - Math.min(distance / maxDistance, 1);
-        
-        this.bioBox.style.boxShadow = `
-            ${deltaX * 0.05}px 
-            ${deltaY * 0.05}px 
-            ${20 + intensity * 20}px 
-            rgba(0, 0, 0, ${0.2 + intensity * 0.1})
-        `;
-    }
-}
-
-// Initialize everything when the DOM is loaded
+// Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     new NavigationMenu();
+    new ImageHandler();
     new MilestoneAnimator();
-    new ParallaxBackground();
-    new BioBox();
 });
 
 // Add page load transition
