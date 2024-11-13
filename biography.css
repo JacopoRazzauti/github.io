@@ -96,10 +96,7 @@ nav a:hover {
     margin-right: 15vw; /* Changed from margin-left to margin-right */
     position: relative;
 }
-.timeline-container {
-    margin-right: 15vw;
-    margin-left: 0;
-}
+
 
 /* Timeline Container */
 .timeline-container {
