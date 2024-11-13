@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biography</title>
+    <title>Biography | Jacopo Razzauti</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="biography.css">
 </head>
 <body>
-    <!-- Scrollable Navigation Menu -->
+    <!-- Navigation Menu -->
     <div class="menu-icon" onclick="toggleMenu()">☰</div>
     <nav id="menu">
         <a href="index.html">Home</a>
@@ -22,46 +23,62 @@
         <div class="timeline">
             <!-- Education -->
             <div class="milestone">
-                <div class="year">2017-2021</div>
-                <div class="description">BSc in Neurosciences, Graduatd with First Class (Honours), University of Dundee, Scotland.</div>
+                <div class="milestone-content">
+                    <div class="year">2017-2021</div>
+                    <div class="description">BSc in Neurosciences, Graduated with First Class (Honours), University of Dundee, Scotland.</div>
+                </div>
             </div>
             <div class="milestone">
-                <div class="year">2021-Present</div>
-                <div class="description">Joined The Rockefeller University, NY.</div>
+                <div class="milestone-content">
+                    <div class="year">2021-Present</div>
+                    <div class="description">Joined The Rockefeller University, NY.</div>
+                </div>
             </div>
             <!-- Research Experience -->
             <div class="milestone">
-                <div class="year">2022-Present</div>
-                <div class="description">PhD Research in Laboratory of Neurogenetics and Behavior at Rockefeller University.</div>
+                <div class="milestone-content">
+                    <div class="year">2022-Present</div>
+                    <div class="description">PhD Research in Laboratory of Neurogenetics and Behavior at Rockefeller University.</div>
+                </div>
             </div>
             <div class="milestone">
-                <div class="year">2019</div>
-                <div class="description">AMGEN Scholar, Max Planck Institute of Neurobiology.</div>
+                <div class="milestone-content">
+                    <div class="year">2019</div>
+                    <div class="description">AMGEN Scholar, Max Planck Institute of Neurobiology.</div>
+                </div>
             </div>
             <!-- Fieldwork -->
             <div class="milestone">
-                <div class="year">2022-2024</div>
-                <div class="description">Mars Society Missions (Mars Desert Research Station, Utah).</div>
+                <div class="milestone-content">
+                    <div class="year">2022-2024</div>
+                    <div class="description">Mars Society Missions (Mars Desert Research Station, Utah).</div>
+                </div>
             </div>
             <!-- Publications -->
             <div class="milestone">
-                <div class="year">2022</div>
-                <div class="description">Publication in <em>Nature</em>: "The pupal moulting fluid has evolved social functions in ants."</div>
+                <div class="milestone-content">
+                    <div class="year">2022</div>
+                    <div class="description">Publication in <em>Nature</em>: "The pupal moulting fluid has evolved social functions in ants."</div>
+                </div>
             </div>
             <!-- Awards -->
             <div class="milestone">
-                <div class="year">2023</div>
-                <div class="description">Recipient of the The Boehringer Ingelheim Fonds (BIF) Awards PhD Fellowships for my studies on mosquito repellency.</div>
+                <div class="milestone-content">
+                    <div class="year">2023</div>
+                    <div class="description">Recipient of the The Boehringer Ingelheim Fonds (BIF) Awards PhD Fellowships for my studies on mosquito repellency.</div>
+                </div>
             </div>
             <!-- Presentations -->
             <div class="milestone">
-                <div class="year">2024</div>
-                <div class="description">Recipient of the Price Family Center for the Social Brain PhD Fellowship for my studies on mosquito swarming.</div>
+                <div class="milestone-content">
+                    <div class="year">2024</div>
+                    <div class="description">Recipient of the Price Family Center for the Social Brain PhD Fellowship for my studies on mosquito swarming.</div>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Bio Box in Bottom-Left Corner -->
+    <!-- Bio Box -->
     <div class="bio-box">
         <p>This timeline captures key moments in my academic and research journey. In brief, I am a PhD student at Rockefeller University specializing on the neurobiological and behavioral basis of mosquito swarming and repellency. I am interested in anything related to animal tracking, machine vision, sensory ecology and decision making in invertebrates. In other words, I spend half of my time looking at bugs brains and the other half fixing bugs in my code.</p>
     </div>
@@ -71,6 +88,16 @@
             const menu = document.getElementById("menu");
             menu.classList.toggle("show");
         }
+
+        // Add smooth scroll behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
     </script>
 </body>
 </html>
