@@ -1,10 +1,11 @@
 /* General Styling */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -16,45 +17,57 @@ body {
 /* Main Circle Styling */
 .main-circle {
     position: relative;
-    background: rgba(255, 255, 255, 0.1);
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    border: 2px solid rgba(255, 255, 255, 0.4);
     border-radius: 50%;
-    width: 400px;
-    height: 400px;
+    width: 450px;
+    height: 450px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease;
-    animation: jitter 4s infinite alternate ease-in-out;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s ease;
+    padding: 2rem;
+}
+
+.main-circle:hover {
+    transform: scale(1.02);
+    border-color: rgba(255, 255, 255, 0.6);
 }
 
 .main-circle h1 {
-    font-size: 1.5em;
+    font-size: 2em;
     color: #fff;
-    margin-bottom: 10px;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.main-circle p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    max-width: 80%;
+    margin-bottom: 2rem;
 }
 
 /* Navigation Circles */
 .nav-circles {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     display: flex;
-    justify-content: space-between;
-    width: 400px;
-    margin-top: 200px;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 2rem;
 }
 
 .nav-circle {
     background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(4px);
     border: 2px solid rgba(255, 255, 255, 0.4);
     border-radius: 50%;
-    width: 80px;
-    height: 80px;
+    width: 90px;
+    height: 90px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -62,116 +75,94 @@ body {
     color: #fff;
     font-weight: bold;
     text-decoration: none;
-    transition: transform 0.3s ease;
-    animation: jitter 6s infinite alternate ease-in-out;
+    transition: all 0.3s ease;
+    font-size: 0.9em;
+    padding: 0.5rem;
 }
 
-/* Image Bubbles Styling */
-.image-bubbles, .top-left-bubbles {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+.nav-circle:hover {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.6);
 }
 
-.image-bubbles {
-    position: fixed;
-    right: 40px;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.top-left-bubbles {
+/* Profile Picture Bubble */
+.profile-bubble {
     position: fixed;
     left: 40px;
     top: 40px;
-}
-
-.image-bubble {
-    position: relative;
+    width: 180px;
+    height: 180px;
     background: rgba(255, 255, 255, 0.2);
-    border: 2px solid rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(8px);
+    border: 3px solid rgba(255, 255, 255, 0.5);
     border-radius: 50%;
-    width: 100px;
-    height: 100px;
     overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    animation: jitter 5s infinite alternate ease-in-out;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
 }
 
-.image-bubble img {
+.profile-bubble:hover {
+    transform: scale(1.05);
+    border-color: rgba(255, 255, 255, 0.8);
+}
+
+.profile-bubble img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 50%;
 }
 
-/* Icon Inside Image Bubble on Hover */
-.icon {
-    position: absolute;
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 2em;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
-}
-
-.image-bubble:hover .icon {
-    opacity: 1;
-}
-
-/* Quote Circle Styling */
-.quote-circle {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    width: 200px;
-    height: 200px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    font-style: italic;
-    color: #fff;
-    padding: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* Mosquito Styling */
+/* Mosquito Animation */
 .mosquito {
     position: absolute;
     width: 20px;
     height: 20px;
     background: url('images/mosquito.png') no-repeat center center;
     background-size: cover;
-    opacity: 0.8;
-    animation: fly 8s linear infinite;
+    opacity: 0.7;
+    filter: brightness(1.2);
+    animation: fly 12s linear infinite;
 }
 
-/* Flying Animation */
 @keyframes fly {
-    0% { transform: translate(0, 0) rotate(0deg); }
-    25% { transform: translate(50px, -50px) rotate(45deg); }
-    50% { transform: translate(100px, 50px) rotate(90deg); }
-    75% { transform: translate(-50px, -100px) rotate(135deg); }
-    100% { transform: translate(0, 0) rotate(180deg); }
-}
-
-/* Enhanced Jitter Animation */
-@keyframes jitter {
-    0% { transform: translate(0, 0); }
-    50% { transform: translate(-6px, 6px); }
-    100% { transform: translate(6px, -6px); }
+    0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+    25% { transform: translate(50px, -50px) rotate(45deg) scale(0.9); }
+    50% { transform: translate(100px, 50px) rotate(90deg) scale(1.1); }
+    75% { transform: translate(-50px, -100px) rotate(135deg) scale(0.95); }
+    100% { transform: translate(0, 0) rotate(180deg) scale(1); }
 }
 
 /* Copyright Text */
 .copyright {
     position: fixed;
-    bottom: 10px;
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
     color: #fff;
-    font-size: 0.8em;
+    font-size: 0.9em;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-circle {
+        width: 90vw;
+        height: 90vw;
+        max-width: 450px;
+        max-height: 450px;
+    }
+
+    .nav-circle {
+        width: 70px;
+        height: 70px;
+        font-size: 0.8em;
+    }
+
+    .profile-bubble {
+        width: 120px;
+        height: 120px;
+        left: 20px;
+        top: 20px;
+    }
 }

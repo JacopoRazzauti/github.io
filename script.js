@@ -1,7 +1,6 @@
 // Array of background images (update paths to your image files)
 const backgrounds = [
     'background1.jpg',
-    'background3.jpg',
     'background5.jpg',
     'background6.jpg',
     'background7.jpg',
