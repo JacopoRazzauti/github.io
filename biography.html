@@ -7,6 +7,17 @@
     <link rel="stylesheet" href="biography.css">
 </head>
 <body>
+    <!-- Scrollable Navigation Menu -->
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <nav id="menu">
+        <a href="index.html">Home</a>
+        <a href="biography.html">Bio(graphy)</a>
+        <a href="biology.html">Bio(logy)</a>
+        <a href="cv.html">CV</a>
+        <a href="contacts.html">Reach Out</a>
+    </nav>
+
+    <!-- Timeline Section -->
     <div class="timeline-container">
         <div class="timeline">
             <!-- Education -->
@@ -54,5 +65,12 @@
     <div class="bio-box">
         <p>Hi! I'm Jacopo Razzauti, a researcher specializing in neurogenetics and sensory ecology. This timeline captures key moments in my academic and research journey. Explore to learn more about my story!</p>
     </div>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById("menu");
+            menu.classList.toggle("show");
+        }
+    </script>
 </body>
 </html>
