@@ -1,15 +1,11 @@
 // Configuration object
 const CONFIG = {
     menu: {
-        animationDelay: 100,
-    },
-    scroll: {
-        duration: 1000,
-        easing: t => t<.5 ? 4*t*t*t : (t-1)*(2*t-2)*(2*t-2)+1
+        animationDelay: 100, // Delay between each menu item animation (ms)
     },
     milestone: {
-        threshold: 0.1,
-        fadeDelay: 100
+        threshold: 0.1,    // Intersection observer threshold
+        fadeDelay: 100     // Delay between milestone animations (ms)
     }
 };
 
@@ -25,7 +21,6 @@ class NavigationMenu {
 
     init() {
         this.menuButton.addEventListener('click', () => this.toggleMenu());
-        this.setupMenuLinks();
         // Close menu when clicking outside
         document.addEventListener('click', (e) => {
             if (this.isOpen && !this.menu.contains(e.target) && !this.menuButton.contains(e.target)) {
@@ -50,41 +45,6 @@ class NavigationMenu {
             }, index * CONFIG.menu.animationDelay);
         });
     }
-
-    setupMenuLinks() {
-        this.menuLinks.forEach(link => {
-            link.addEventListener('click', (e) => this.handleLinkClick(e));
-        });
-    }
-
-    handleLinkClick(e) {
-        const href = e.currentTarget.getAttribute('href');
-        if (href.startsWith('#')) {
-            e.preventDefault();
-            this.smoothScroll(href);
-        }
-    }
-
-    smoothScroll(targetId) {
-        const target = document.querySelector(targetId);
-        if (!target) return;
-
-        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
-        const startPosition = window.pageYOffset;
-        const distance = targetPosition - startPosition;
-        let startTime = null;
-
-        const animation = (currentTime) => {
-            if (!startTime) startTime = currentTime;
-            const progress = Math.min((currentTime - startTime) / CONFIG.scroll.duration, 1);
-            const easing = CONFIG.scroll.easing(progress);
-            window.scrollTo(0, startPosition + distance * easing);
-            
-            if (progress < 1) requestAnimationFrame(animation);
-        };
-
-        requestAnimationFrame(animation);
-    }
 }
 
 // Image handling
@@ -107,12 +67,18 @@ class ImageHandler {
     }
 
     handleImageLoad(img) {
-        img.classList.add('loaded');
+        console.log('Image loaded successfully:', img.src);
+        img.style.opacity = '1';
     }
 
     handleImageError(img) {
-        img.src = 'images/placeholder.jpg'; // Fallback image
-        img.alt = 'Image not available';
+        console.error('Failed to load image:', img.src);
+        img.style.opacity = '0.3';
+        img.style.filter = 'grayscale(100%)';
+        const container = img.closest('.milestone-image-container');
+        if (container) {
+            container.style.backgroundColor = 'rgba(255, 0, 0, 0.1)';
+        }
     }
 }
 
@@ -155,29 +121,71 @@ class MilestoneAnimator {
     }
 
     setupHoverEffects() {
-        document.querySelectorAll('.milestone-image').forEach(image => {
-            image.addEventListener('mousemove', (e) => this.handleImageHover(e, image));
-            image.addEventListener('mouseleave', () => this.resetImageTransform(image));
+        document.querySelectorAll('.milestone-image-container').forEach(container => {
+            container.addEventListener('mousemove', (e) => this.handleContainerHover(e, container));
+            container.addEventListener('mouseleave', () => this.resetContainerTransform(container));
         });
     }
 
-    handleImageHover(e, image) {
-        const bounds = image.getBoundingClientRect();
-        const mouseX = e.clientX - bounds.left;
-        const mouseY = e.clientY - bounds.top;
-        const rotateX = (mouseY / bounds.height - 0.5) * 20;
-        const rotateY = (mouseX / bounds.width - 0.5) * 20;
+    handleContainerHover(e, container) {
+        const rect = container.getBoundingClientRect();
+        const mouseX = e.clientX - rect.left;
+        const mouseY = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const angleX = (mouseY - centerY) / 10;
+        const angleY = (mouseX - centerX) / 10;
 
-        image.style.transform = `
+        container.style.transform = `
             perspective(1000px) 
-            rotateX(${-rotateX}deg) 
-            rotateY(${rotateY}deg)
-            scale3d(1.05, 1.05, 1.05)
+            rotateX(${-angleX}deg) 
+            rotateY(${angleY}deg) 
+            scale3d(1.02, 1.02, 1.02)
         `;
     }
 
-    resetImageTransform(image) {
-        image.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+    resetContainerTransform(container) {
+        container.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+    }
+}
+
+// Bio box effects
+class BioBox {
+    constructor() {
+        this.bioBox = document.querySelector('.bio-box');
+        if (this.bioBox) {
+            this.init();
+        }
+    }
+
+    init() {
+        window.addEventListener('mousemove', (e) => this.handleMouseMove(e));
+    }
+
+    handleMouseMove(e) {
+        if (!this.bioBox) return;
+
+        const rect = this.bioBox.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        const deltaX = e.clientX - centerX;
+        const deltaY = e.clientY - centerY;
+        
+        const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+        const maxDistance = Math.sqrt(
+            window.innerWidth * window.innerWidth + 
+            window.innerHeight * window.innerHeight
+        );
+        
+        const intensity = 1 - Math.min(distance / maxDistance, 1);
+        
+        this.bioBox.style.boxShadow = `
+            ${deltaX * 0.05}px 
+            ${deltaY * 0.05}px 
+            ${20 + intensity * 20}px 
+            rgba(0, 0, 0, ${0.2 + intensity * 0.1})
+        `;
     }
 }
 
@@ -186,9 +194,15 @@ document.addEventListener('DOMContentLoaded', () => {
     new NavigationMenu();
     new ImageHandler();
     new MilestoneAnimator();
-});
+    new BioBox();
 
-// Add page load transition
-window.addEventListener('load', () => {
-    document.body.classList.add('loaded');
+    // Debug logging for background image
+    const backgroundWrapper = document.querySelector('.background-wrapper');
+    if (backgroundWrapper) {
+        console.log('Background wrapper found');
+        const computedStyle = window.getComputedStyle(backgroundWrapper);
+        console.log('Background image:', computedStyle.backgroundImage);
+    } else {
+        console.error('Background wrapper not found');
+    }
 });

@@ -9,15 +9,14 @@ body {
     overflow-x: hidden;
 }
 
+/* Background Setup */
 .background-wrapper {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    background: url('scorpion2.jpg') no-repeat center center; /* If in root directory */
-    /* OR */
-    /* background: url('images/scorpion.jpg') no-repeat center center; */ /* If in images folder */
+    background: url('./scorpion.jpg') no-repeat center center;
     background-size: cover;
     z-index: -2;
 }
@@ -267,18 +266,6 @@ nav a:hover {
     color: rgba(255, 255, 255, 0.9);
 }
 
-/* Hover Effects */
-.milestone-content:hover,
-.milestone-image-container:hover {
-    transform: scale(1.02);
-    border-color: rgba(255, 255, 255, 0.5);
-    background: rgba(255, 255, 255, 0.15);
-}
-
-.milestone-image:hover img {
-    transform: scale(1.05);
-}
-
 /* Animations */
 @keyframes jitter {
     0% { transform: translate(0, 0); }
@@ -342,39 +329,5 @@ nav a:hover {
         bottom: auto;
         max-width: 280px;
         margin: 40px auto;
-    }
-}
-
-/* Loading States */
-.milestone-image img {
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.milestone-image img.loaded {
-    opacity: 1;
-}
-
-/* Print Styles */
-@media print {
-    .menu-icon,
-    nav {
-        display: none;
-    }
-
-    .background-wrapper {
-        display: none;
-    }
-
-    body {
-        color: #000;
-    }
-
-    .milestone-content,
-    .bio-box {
-        background: none;
-        border: 1px solid #000;
-        box-shadow: none;
-        animation: none;
     }
 }
