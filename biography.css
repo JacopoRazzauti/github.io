@@ -3,7 +3,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: url('your-selected-image.jpg') no-repeat center center fixed;
+    background: url('scorpion.jpg') no-repeat center center fixed;
     background-size: cover;
     color: #fff;
     overflow-y: scroll; /* Make page scrollable */
