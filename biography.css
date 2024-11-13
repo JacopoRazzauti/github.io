@@ -3,64 +3,65 @@ body {
     font-family: 'Inter', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: url('scorpion.jpg') no-repeat center center fixed;
-    background-size: cover;
-    background-attachment: fixed; /* This ensures the background stays fixed */
-    color: #fff;
-    overflow-x: hidden;
     min-height: 100vh;
+    color: #fff;
+    position: relative;
+    overflow-x: hidden;
 }
 
-/* Navigation Menu */
-nav {
+/* Fixed Background */
+body::before {
+    content: '';
     position: fixed;
     top: 0;
-    right: -300px; /* Changed from left to right */
+    left: 0;
+    width: 100%;
     height: 100%;
-    width: 250px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(8px);
+    background: url('scorpion.jpg') no-repeat center center;
+    background-size: cover;
+    z-index: -1;
+}
+
+/* Timeline Container */
+.timeline-container {
     display: flex;
-    flex-direction: row; /* Changed to row for horizontal layout */
-    align-items: center; /* Center items vertically */
-    padding: 20px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease;
-    z-index: 90;
-    transform-origin: right center;
-    transform: rotate(-90deg) translateX(100%);
+    justify-content: center;
+    padding: 50px 0;
+    margin-left: 15vw;
+    position: relative;
 }
 
-nav.show {
-    transform: rotate(-90deg) translateX(0);
+/* Timeline Styling */
+.timeline {
+    position: relative;
+    width: 3px;
+    background: rgba(255, 255, 255, 0.3);
+    min-height: 200vh;
+    margin: 0 auto;
+    z-index: 1;
 }
 
-nav a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 15px; /* Adjusted margins for horizontal layout */
-    font-size: 1.2em;
-    padding: 10px 20px;
-    border-radius: 25px;
-    transition: all 0.3s ease;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(4px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    white-space: nowrap; /* Prevent text wrapping */
-}
-
-nav a:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateY(-5px);
-}
-
-/* Milestone Image Bubbles */
+/* Milestone Styling with Improved Spacing */
 .milestone {
     position: relative;
     margin: 180px 0;
     display: flex;
     align-items: center;
-    gap: 30px;
+    width: 100%;
+    padding: 0 50px; /* Added padding to prevent overlap */
+}
+
+/* Even/Odd milestone positioning */
+.milestone:nth-child(odd) {
+    flex-direction: row;
+    padding-left: 100px; /* Increased padding for better spacing */
+    padding-right: 30px;
+}
+
+.milestone:nth-child(even) {
+    flex-direction: row-reverse;
+    padding-right: 100px; /* Increased padding for better spacing */
+    padding-left: 30px;
 }
 
 .milestone-content {
@@ -73,11 +74,11 @@ nav a:hover {
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
     animation: jitter 6s infinite alternate ease-in-out;
+    margin: 0 30px; /* Added margin to prevent timeline overlap */
 }
 
 .milestone-image-container {
-    width: 400px; /* Same width as milestone-content */
-    height: auto;
+    width: 400px;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(8px);
     border: 2px solid rgba(255, 255, 255, 0.3);
@@ -85,13 +86,35 @@ nav a:hover {
     overflow: hidden;
     transition: all 0.3s ease;
     animation: jitter 7s infinite alternate ease-in-out;
+    margin: 0 30px; /* Added margin to prevent timeline overlap */
 }
 
+/* Timeline dots with improved positioning */
+.milestone::before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: #fff;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    z-index: 2;
+}
+
+.milestone:nth-child(odd)::before {
+    left: 91px; /* Adjusted to align with timeline */
+}
+
+.milestone:nth-child(even)::before {
+    right: 91px; /* Adjusted to align with timeline */
+}
+
+/* Rest of your existing styles remain the same */
 .milestone-image {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    transition: all 0.3s ease;
     padding: 10px;
 }
 
@@ -106,22 +129,26 @@ nav a:hover {
     transform: scale(1.05);
 }
 
-/* Timeline adjustments */
-.timeline-container {
-    display: flex;
-    justify-content: center;
-    padding: 50px 0;
-    margin-left: 15vw;
-    position: relative;
-    z-index: 1; /* Ensure content stays above background */
+.year {
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.timeline {
-    position: relative;
-    width: 3px;
-    background: rgba(255, 255, 255, 0.3);
-    min-height: 200vh;
-    margin: 0 auto;
+.description {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Hover effects */
+.milestone-content:hover,
+.milestone-image-container:hover {
+    transform: scale(1.02);
+    border-color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.15);
 }
 
 /* Animations */
@@ -131,31 +158,53 @@ nav a:hover {
     100% { transform: translate(4px, -4px); }
 }
 
-/* Responsive adjustments */
+/* Responsive Design */
+@media (max-width: 1400px) {
+    .milestone-content,
+    .milestone-image-container {
+        width: 350px;
+    }
+    
+    .milestone:nth-child(odd) {
+        padding-left: 80px;
+    }
+    
+    .milestone:nth-child(even) {
+        padding-right: 80px;
+    }
+}
+
 @media (max-width: 1200px) {
     .milestone-content,
     .milestone-image-container {
         width: 300px;
     }
+    
+    .milestone {
+        padding: 0 30px;
+    }
 }
 
 @media (max-width: 768px) {
+    .timeline-container {
+        margin-left: 5vw;
+    }
+
     .milestone {
-        flex-direction: column;
+        flex-direction: column !important;
+        align-items: center !important;
+        padding: 0 !important;
         margin: 100px 0;
     }
 
     .milestone-content,
     .milestone-image-container {
         width: 280px;
+        margin: 20px 0;
     }
 
-    nav {
-        width: 200px;
-    }
-
-    nav a {
-        font-size: 1em;
-        padding: 8px 15px;
+    .milestone::before {
+        left: 50% !important;
+        transform: translateX(-50%) !important;
     }
 }
