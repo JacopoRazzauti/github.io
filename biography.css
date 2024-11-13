@@ -16,7 +16,7 @@ body {
     left: 0;
     width: 100%;
     height: 100vh;
-    background: url('images/scorpion.jpg') no-repeat center center;
+    background: url('scorpion.jpg') no-repeat center center;
     background-size: cover;
     z-index: -2;
 }
