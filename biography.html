@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Biography | Jacopo Razzauti</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Add the ocean background CSS first -->
+    <link rel="stylesheet" href="ocean-background.css">
+    <!-- Then your regular biography CSS -->
     <link rel="stylesheet" href="biography.css">
-    <script defer src="biography.js"></script>
 </head>
 <body>
     <!-- Navigation Menu -->
@@ -18,7 +20,6 @@
         <a href="cv.html">CV</a>
         <a href="contacts.html">Reach Out</a>
     </nav>
-
     <!-- Timeline Section -->
 <div class="timeline-container">
     <div class="timeline">
@@ -108,7 +109,12 @@
     </div>
 </div>
 
-    <!-- Bio Box -->
-    <div class="bio-box">
-        <p>This timeline captures key moments in my academic and research journey. In brief, I am a PhD student at Rockefeller University specializing on the neurobiological and behavioral basis of mosquito swarming and repellency. I am interested in anything related to animal tracking, machine vision, sensory ecology and decision making in invertebrates. In other words, I spend half of my time looking at bugs brains and the other half fixing bugs in my code.</p>
-    </div>
+<div class="bio-box">
+    <p>This timeline captures key moments in my academic and research journey...</p>
+</div>
+
+<!-- Add the ocean animation JS before your biography JS -->
+<script src="ocean-animation.js"></script>
+<script src="biography.js"></script>
+</body>
+</html>
