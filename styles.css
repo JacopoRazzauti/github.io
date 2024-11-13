@@ -91,15 +91,16 @@ body {
     position: fixed;
     left: 40px;
     top: 40px;
-    width: 180px;
-    height: 180px;
+    width: 150px;    /* Increased from original size but not as large as previous suggestion */
+    height: 150px;   /* Increased from original size but not as large as previous suggestion */
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(8px);
     border: 3px solid rgba(255, 255, 255, 0.5);
     border-radius: 50%;
     overflow: hidden;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-    transition: all 0.4s ease;
+    transition: transform 0.3s ease;
+    animation: jitter 6s infinite alternate ease-in-out;
 }
 
 .profile-bubble:hover {
@@ -111,6 +112,13 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+/* Jitter Animation */
+@keyframes jitter {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(-6px, 6px); }
+    100% { transform: translate(6px, -6px); }
 }
 
 /* Mosquito Animation */
@@ -160,8 +168,8 @@ body {
     }
 
     .profile-bubble {
-        width: 120px;
-        height: 120px;
+        width: 100px;
+        height: 100px;
         left: 20px;
         top: 20px;
     }
