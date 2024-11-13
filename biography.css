@@ -3,23 +3,99 @@ body {
     font-family: 'Inter', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    min-height: 100vh;
+    background: url('scorpion.jpg') no-repeat center center fixed;
+    background-size: cover;
+    background-attachment: fixed; /* This ensures the background stays fixed while scrolling */
     color: #fff;
+    min-height: 100vh;
     position: relative;
     overflow-x: hidden;
 }
 
-/* Add to your existing biography.css */
+/* Add a dark overlay to make text more readable */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: -1;
+}
+
+/* Update menu position to right side */
+.menu-icon {
+    position: fixed;
+    top: 20px;
+    right: 20px; /* Changed from left to right */
+    font-size: 1.5em;
+    color: #fff;
+    cursor: pointer;
+    z-index: 100;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.menu-icon:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
 nav {
-    right: 0;
-    left: auto;
-    transform-origin: right center;
+    position: fixed;
+    top: 0;
+    right: -300px; /* Changed from left to right */
+    height: 100%;
+    width: 250px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    display: flex;
+    flex-direction: column;
+    padding: 80px 20px 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    z-index: 90;
 }
 
 nav.show {
-    transform: rotate(-90deg) translateX(0);
+    transform: translateX(-300px);
 }
 
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 15px 0;
+    font-size: 1.2em;
+    padding: 10px 20px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+nav a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(-10px);
+}
+
+/* Timeline Container adjusted for right-side menu */
+.timeline-container {
+    display: flex;
+    justify-content: center;
+    padding: 50px 0;
+    margin-right: 15vw; /* Changed from margin-left to margin-right */
+    position: relative;
+}
 .timeline-container {
     margin-right: 15vw;
     margin-left: 0;
