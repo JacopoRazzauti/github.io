@@ -5,19 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact | Jacopo Razzauti</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <!-- Add Font Awesome for social icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         body {
             margin: 0;
             padding: 0;
-            background-color: black;
             min-height: 100vh;
             font-family: 'Inter', Arial, sans-serif;
             color: white;
             display: flex;
             justify-content: center;
             align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Background Setup */
+        .background-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: url('./background4.jpg') no-repeat center center;
+            background-size: cover;
+            z-index: -2;
+        }
+
+        .background-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
         }
 
         /* Menu Styles */
@@ -57,7 +79,7 @@
             display: flex;
             flex-direction: column;
             padding: 80px 20px 20px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease;
             z-index: 90;
         }
@@ -88,13 +110,20 @@
         .contact-container {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(8px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
             border-radius: 20px;
             padding: 40px;
             max-width: 600px;
             width: 90%;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            animation: float 6s infinite alternate ease-in-out;
+            animation: jitter 6s infinite alternate ease-in-out;
+            transition: all 0.3s ease;
+        }
+
+        .contact-container:hover {
+            transform: scale(1.02);
+            border-color: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.15);
         }
 
         .contact-header {
@@ -106,10 +135,11 @@
             font-size: 2.5em;
             margin-bottom: 10px;
             color: #fff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         .contact-header p {
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.9);
             font-size: 1.1em;
         }
 
@@ -123,18 +153,19 @@
             display: flex;
             align-items: center;
             padding: 15px 20px;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(4px);
             border-radius: 15px;
             transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             text-decoration: none;
             color: white;
         }
 
         .contact-item:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-5px) scale(1.02);
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
         }
 
         .contact-item i {
@@ -154,10 +185,10 @@
             opacity: 0.7;
         }
 
-        @keyframes float {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0); }
+        @keyframes jitter {
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(-4px, 4px); }
+            100% { transform: translate(4px, -4px); }
         }
 
         @media (max-width: 768px) {
@@ -173,10 +204,17 @@
             .contact-item {
                 padding: 12px 15px;
             }
+
+            .contact-item span:not(.label) {
+                font-size: 0.9em;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Background wrapper -->
+    <div class="background-wrapper"></div>
+
     <!-- Navigation Menu -->
     <div class="menu-icon" onclick="toggleMenu()">☰</div>
     <nav id="menu">
@@ -190,8 +228,8 @@
     <!-- Contact Container -->
     <div class="contact-container">
         <div class="contact-header">
-            <h1>Get in Touch</h1>
-            <p>Feel free to reach out through any of these channels</p>
+            <h1>Get in Touch!</h1>
+            <p>Whether is for a specific question or to chat about animal behavior, feel free to reach out using one of the following links</p>
         </div>
         <div class="contact-links">
             <a href="mailto:jrazzauti@rockefeller.edu" class="contact-item">
