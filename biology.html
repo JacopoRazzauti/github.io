@@ -1,7 +1,184 @@
-<nav>
-    <a href="index.html">Home</a> |
-    <a href="biography.html">Biography</a> |
-    <a href="biology.html">Biology</a> |
-    <a href="cv.html">CV</a> |
-    <a href="contacts.html">Contacts</a>
-</nav>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biology | Jacopo Razzauti</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: black;
+            min-height: 100vh;
+            font-family: 'Inter', Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        /* Menu Styles (keeping consistent with other pages) */
+        .menu-icon {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5em;
+            color: #fff;
+            cursor: pointer;
+            z-index: 100;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .menu-icon:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            height: 100%;
+            width: 250px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            display: flex;
+            flex-direction: column;
+            padding: 80px 20px 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            z-index: 90;
+        }
+
+        nav.show {
+            transform: translateX(-300px);
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 15px 0;
+            font-size: 1.2em;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-10px);
+        }
+
+        /* Split Section Styles */
+        .container {
+            display: flex;
+            height: 100vh;
+            position: relative;
+        }
+
+        .section {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .section-text {
+            color: white;
+            font-size: 4em;
+            font-weight: bold;
+            transition: all 0.5s ease;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            z-index: 2;
+        }
+
+        .section:hover .section-text {
+            font-size: 5em;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+        }
+
+        /* Animated Divider */
+        .divider {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: white;
+            transform: translateX(-50%);
+        }
+
+        .divider::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: white;
+            animation: wave 8s ease-in-out infinite;
+        }
+
+        @keyframes wave {
+            0% { clip-path: path('M 0 0 Q 0 250 0 500'); }
+            25% { clip-path: path('M 0 0 Q 50 250 0 500'); }
+            50% { clip-path: path('M 0 0 Q -50 250 0 500'); }
+            75% { clip-path: path('M 0 0 Q 50 250 0 500'); }
+            100% { clip-path: path('M 0 0 Q 0 250 0 500'); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Menu -->
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <nav id="menu">
+        <a href="index.html">Home</a>
+        <a href="biography.html">Bio(graphy)</a>
+        <a href="biology.html">Bio(logy)</a>
+        <a href="cv.html">CV</a>
+        <a href="contacts.html">Reach Out</a>
+    </nav>
+
+    <!-- Split Sections -->
+    <div class="container">
+        <div class="section">
+            <div class="section-text">BRAIN</div>
+        </div>
+        <div class="divider"></div>
+        <div class="section">
+            <div class="section-text">BEHAVIOR</div>
+        </div>
+    </div>
+
+    <script>
+        // Menu Toggle Function
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('show');
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            const menu = document.getElementById('menu');
+            const menuIcon = document.querySelector('.menu-icon');
+            if (menu.classList.contains('show') && 
+                !menu.contains(e.target) && 
+                !menuIcon.contains(e.target)) {
+                menu.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>
