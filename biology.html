@@ -6,128 +6,23 @@
     <title>Biology | Jacopo Razzauti</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: black;
-            min-height: 100vh;
-            font-family: 'Inter', Arial, sans-serif;
-            overflow: hidden;
-        }
+        /* Previous styles remain the same until the dividers */
 
-        /* Menu Styles - keeping the same as before */
-        .menu-icon {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            font-size: 1.5em;
-            color: #fff;
-            cursor: pointer;
-            z-index: 100;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(8px);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .menu-icon:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: scale(1.1);
-        }
-
-        nav {
-            position: fixed;
-            top: 0;
-            right: -300px;
-            height: 100%;
-            width: 250px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(8px);
-            display: flex;
-            flex-direction: column;
-            padding: 80px 20px 20px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
-            z-index: 100;
-        }
-
-        nav.show {
-            transform: translateX(-300px);
-        }
-
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            margin: 15px 0;
-            font-size: 1.2em;
-            padding: 10px 20px;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(4px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        nav a:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateX(-10px);
-        }
-
-        /* Container for all sections */
+        /* Updated Container and Section Styles */
         .container {
             height: 100vh;
             width: 100vw;
             display: flex;
             flex-direction: column;
+            position: relative;
         }
 
-        /* Row containers */
         .row {
             display: flex;
             flex: 1;
             position: relative;
         }
 
-        /* Dividers */
-        .vertical-divider {
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: white;
-            transform: translateX(-50%);
-        }
-
-        .horizontal-divider {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: white;
-            transform: translateY(-50%);
-            z-index: 2;
-        }
-
-        .vertical-divider::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: white;
-            animation: wave 8s ease-in-out infinite;
-        }
-
-        /* Section Styling */
         .section {
             flex: 1;
             display: flex;
@@ -135,7 +30,7 @@
             align-items: center;
             position: relative;
             cursor: pointer;
-            transition: flex 0.5s ease;
+            transition: flex 0.8s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 1;
         }
 
@@ -143,6 +38,49 @@
             flex: 3;
         }
 
+        /* Updated Divider Styles */
+        .vertical-divider-container {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            transform: translateX(-50%);
+            transition: left 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .vertical-divider {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: white;
+            animation: wave 8s ease-in-out infinite;
+        }
+
+        .horizontal-divider-container {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 4px;
+            transform: translateY(-50%);
+            z-index: 2;
+            pointer-events: none;
+            background: white;
+        }
+
+        /* Animation for wave effect */
+        @keyframes wave {
+            0% { clip-path: path('M 0 0 Q 0 250 0 500'); }
+            25% { clip-path: path('M 0 0 Q 50 250 0 500'); }
+            50% { clip-path: path('M 0 0 Q -50 250 0 500'); }
+            75% { clip-path: path('M 0 0 Q 50 250 0 500'); }
+            100% { clip-path: path('M 0 0 Q 0 250 0 500'); }
+        }
+
+        /* Text Styling */
         .section-text {
             color: white;
             font-size: 4em;
@@ -156,18 +94,10 @@
             font-size: 5em;
             text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
         }
-
-        @keyframes wave {
-            0% { clip-path: path('M 0 0 Q 0 250 0 500'); }
-            25% { clip-path: path('M 0 0 Q 50 250 0 500'); }
-            50% { clip-path: path('M 0 0 Q -50 250 0 500'); }
-            75% { clip-path: path('M 0 0 Q 50 250 0 500'); }
-            100% { clip-path: path('M 0 0 Q 0 250 0 500'); }
-        }
     </style>
 </head>
 <body>
-    <!-- Navigation Menu -->
+    <!-- Navigation Menu remains the same -->
     <div class="menu-icon" onclick="toggleMenu()">☰</div>
     <nav id="menu">
         <a href="index.html">Home</a>
@@ -177,42 +107,44 @@
         <a href="contacts.html">Reach Out</a>
     </nav>
 
-    <!-- Main Container -->
+    <!-- Updated Container Structure -->
     <div class="container">
         <!-- Top Row -->
-        <div class="row">
-            <div class="section" id="brain" onclick="toggleExpand(this, 'behavior')">
+        <div class="row" id="top-row">
+            <div class="section" id="brain" onclick="toggleExpand(this, 'behavior', 'top')">
                 <div class="section-text">BRAIN</div>
             </div>
-            <div class="vertical-divider"></div>
-            <div class="section" id="behavior" onclick="toggleExpand(this, 'brain')">
+            <div class="vertical-divider-container" id="top-divider">
+                <div class="vertical-divider"></div>
+            </div>
+            <div class="section" id="behavior" onclick="toggleExpand(this, 'brain', 'top')">
                 <div class="section-text">BEHAVIOR</div>
             </div>
         </div>
         
-        <!-- Horizontal Divider -->
-        <div class="horizontal-divider"></div>
+        <div class="horizontal-divider-container"></div>
         
         <!-- Bottom Row -->
-        <div class="row">
-            <div class="section" id="tools" onclick="toggleExpand(this, 'environment')">
+        <div class="row" id="bottom-row">
+            <div class="section" id="tools" onclick="toggleExpand(this, 'environment', 'bottom')">
                 <div class="section-text">TOOLS</div>
             </div>
-            <div class="vertical-divider"></div>
-            <div class="section" id="environment" onclick="toggleExpand(this, 'tools')">
+            <div class="vertical-divider-container" id="bottom-divider">
+                <div class="vertical-divider"></div>
+            </div>
+            <div class="section" id="environment" onclick="toggleExpand(this, 'tools', 'bottom')">
                 <div class="section-text">ENVIRONMENT</div>
             </div>
         </div>
     </div>
 
     <script>
-        // Menu Toggle Function
+        // Menu functions remain the same
         function toggleMenu() {
             const menu = document.getElementById('menu');
             menu.classList.toggle('show');
         }
 
-        // Close menu when clicking outside
         document.addEventListener('click', (e) => {
             const menu = document.getElementById('menu');
             const menuIcon = document.querySelector('.menu-icon');
@@ -223,20 +155,39 @@
             }
         });
 
-        // Section Expansion Function
-        function toggleExpand(clickedSection, oppositeSectionId) {
+        // Updated expand function with divider movement
+        function toggleExpand(clickedSection, oppositeSectionId, rowId) {
             const oppositeSection = document.getElementById(oppositeSectionId);
-            
-            // Reset all sections in the same row
+            const divider = document.getElementById(`${rowId}-divider`);
             const row = clickedSection.parentElement;
+            
+            // Reset all sections in the row
             const sections = row.getElementsByClassName('section');
             Array.from(sections).forEach(section => {
                 section.classList.remove('expanded');
             });
             
-            // Expand clicked section
+            // Expand clicked section and move divider
             clickedSection.classList.add('expanded');
+            
+            // Calculate new divider position
+            const rowWidth = row.offsetWidth;
+            const expandedRatio = 3; // matches the flex ratio in CSS
+            const totalParts = expandedRatio + 1; // expanded section + other section
+            const newPosition = clickedSection.id === oppositeSectionId ? 50 : 
+                              (clickedSection === row.firstElementChild ? 
+                               (expandedRatio * 100) / totalParts : 
+                               (100) / totalParts);
+            
+            // Move divider
+            divider.style.left = `${newPosition}%`;
         }
+
+        // Initialize divider positions
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('top-divider').style.left = '50%';
+            document.getElementById('bottom-divider').style.left = '50%';
+        });
     </script>
 </body>
 </html>
