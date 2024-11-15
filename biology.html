@@ -166,77 +166,158 @@
         }
     </style>
 </head>
-<body>
-    <!-- Navigation Menu -->
-    <div class="menu-icon" onclick="toggleMenu()">☰</div>
-    <nav id="menu">
-        <a href="index.html">Home</a>
-        <a href="biography.html">Bio(graphy)</a>
-        <a href="biology.html">Bio(logy)</a>
-        <a href="cv.html">CV</a>
-        <a href="contacts.html">Reach Out</a>
-    </nav>
+<style>
+    /* Keep all previous styles and add these new ones */
+    .section {
+        overflow: hidden;
+        position: relative;
+    }
 
-    <!-- Main Container -->
-    <div class="container">
-        <!-- Top Row -->
-        <div class="row">
-            <div class="section" id="brain" onclick="toggleExpand(this, 'behavior')">
-                <div class="section-text">BRAIN</div>
-            </div>
-            <div class="vertical-divider"></div>
-            <div class="section" id="behavior" onclick="toggleExpand(this, 'brain')">
-                <div class="section-text">BEHAVIOR</div>
+    .content-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        padding: 20px;
+        visibility: hidden;
+    }
+
+    .section.expanded .content-wrapper {
+        opacity: 1;
+        visibility: visible;
+        transition-delay: 0.3s;
+    }
+
+    .content-text {
+        color: white;
+        font-size: 1.2em;
+        line-height: 1.6;
+        max-width: 80%;
+        text-align: left;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.7);
+        border-radius: 15px;
+        backdrop-filter: blur(5px);
+        z-index: 3;
+    }
+
+    .background-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        z-index: 1;
+    }
+
+    .section.expanded .background-image {
+        opacity: 0.3;
+    }
+
+    .section-text {
+        position: relative;
+        z-index: 2;
+        transition: transform 0.5s ease, font-size 0.5s ease;
+    }
+
+    .section.expanded .section-text {
+        transform: translateX(-30%);
+    }
+</style>
+
+<!-- Body section update -->
+<div class="container">
+    <!-- Top Row -->
+    <div class="row">
+        <div class="section" id="brain" onclick="toggleExpand(this, 'behavior')">
+            <div class="section-text">BRAIN</div>
+            <img src="profile1.jpg" alt="Brain Research" class="background-image">
+            <div class="content-wrapper">
+                <div class="content-text">
+                    Understanding the neural circuits underlying behavior is at the core of my research. 
+                    I focus on how sensory information is processed and transformed into meaningful 
+                    behavioral outputs, with particular emphasis on mosquito olfactory systems and their 
+                    response to human cues.
+                </div>
             </div>
         </div>
-        
-        <!-- Horizontal Divider -->
-        <div class="horizontal-divider"></div>
-        
-        <!-- Bottom Row -->
-        <div class="row">
-            <div class="section" id="tools" onclick="toggleExpand(this, 'environment')">
-                <div class="section-text">TOOLS</div>
-            </div>
-            <div class="vertical-divider"></div>
-            <div class="section" id="environment" onclick="toggleExpand(this, 'tools')">
-                <div class="section-text">ENVIRONMENT</div>
+        <div class="vertical-divider"></div>
+        <div class="section" id="behavior" onclick="toggleExpand(this, 'brain')">
+            <div class="section-text">BEHAVIOR</div>
+            <img src="cover.jpg" alt="Behavior Research" class="background-image">
+            <div class="content-wrapper">
+                <div class="content-text">
+                    My research investigates complex behavioral patterns in insects, particularly focusing 
+                    on mosquito swarming dynamics and host-seeking behaviors. Using advanced tracking 
+                    systems and behavioral analysis, we study how environmental cues influence these 
+                    behaviors at both individual and group levels.
+                </div>
             </div>
         </div>
     </div>
+    
+    <!-- Horizontal Divider -->
+    <div class="horizontal-divider"></div>
+    
+    <!-- Bottom Row -->
+    <div class="row">
+        <div class="section" id="tools" onclick="toggleExpand(this, 'environment')">
+            <div class="section-text">TOOLS</div>
+            <div class="content-wrapper">
+                <div class="content-text">
+                    We develop and implement cutting-edge tools for neuroscience research, including 
+                    advanced imaging techniques, machine learning algorithms for behavioral analysis, 
+                    and custom-built hardware solutions for tracking and stimulus delivery. Our toolkit 
+                    combines traditional neuroscience methods with modern computational approaches.
+                </div>
+            </div>
+        </div>
+        <div class="vertical-divider"></div>
+        <div class="section" id="environment" onclick="toggleExpand(this, 'tools')">
+            <div class="section-text">ENVIRONMENT</div>
+            <img src="scorpion.jpg" alt="Environmental Research" class="background-image">
+            <div class="content-wrapper">
+                <div class="content-text">
+                    Environmental factors play a crucial role in shaping animal behavior. Our research 
+                    examines how various environmental conditions influence neural processing and 
+                    behavioral responses, with particular attention to how climate change might affect 
+                    insect behavior and human-insect interactions.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-    <script>
-        // Menu Toggle Function
-        function toggleMenu() {
-            const menu = document.getElementById('menu');
-            menu.classList.toggle('show');
-        }
+<!-- Update the script section -->
+<script>
+    // Keep existing menu toggle functions
 
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            const menu = document.getElementById('menu');
-            const menuIcon = document.querySelector('.menu-icon');
-            if (menu.classList.contains('show') && 
-                !menu.contains(e.target) && 
-                !menuIcon.contains(e.target)) {
-                menu.classList.remove('show');
-            }
-        });
-
-        // Section Expansion Function
-        function toggleExpand(clickedSection, oppositeSectionId) {
-            const oppositeSection = document.getElementById(oppositeSectionId);
-            
+    // Updated Section Expansion Function
+    function toggleExpand(clickedSection, oppositeSectionId) {
+        const oppositeSection = document.getElementById(oppositeSectionId);
+        const row = clickedSection.parentElement;
+        const sections = row.getElementsByClassName('section');
+        
+        if (clickedSection.classList.contains('expanded')) {
+            // If already expanded, collapse
+            clickedSection.classList.remove('expanded');
+        } else {
             // Reset all sections in the same row
-            const row = clickedSection.parentElement;
-            const sections = row.getElementsByClassName('section');
             Array.from(sections).forEach(section => {
                 section.classList.remove('expanded');
             });
-            
             // Expand clicked section
             clickedSection.classList.add('expanded');
         }
-    </script>
-</body>
+    }
+</script>
 </html>
