@@ -1,27 +1,17 @@
-// Array of background images
-const backgrounds = [
-    'background1.jpg',
-    'background5.jpg',
-    'background6.jpg',
-    'background7.jpg',
-];
-
-// Configuration object for mosquitoes
-const MOSQUITO_CONFIG = {
-    updateInterval: 4000,  // Time between position updates (ms)
-    count: 2,             // Number of mosquitoes
-    bounds: {             // Movement boundaries
-        margin: 50        // Margin from window edges
-    }
-};
-
 /**
  * Sets a random background image from the backgrounds array
  */
 function setRandomBackground() {
+    const backgrounds = [
+        'images/background1.jpg',
+        'images/background5.jpg',
+        'images/background6.jpg',
+        'images/background7.jpg',
+    ];
+
     const randomIndex = Math.floor(Math.random() * backgrounds.length);
     const imageUrl = `url('${backgrounds[randomIndex]}')`;
-    
+
     // Create a new image to preload
     const img = new Image();
     img.onload = () => {
@@ -36,7 +26,7 @@ function setRandomBackground() {
  * @returns {{x: number, y: number}} Coordinates
  */
 function getRandomPosition() {
-    const margin = MOSQUITO_CONFIG.bounds.margin;
+    const margin = 50; // Use a constant for margin
     return {
         x: margin + Math.random() * (window.innerWidth - 2 * margin),
         y: margin + Math.random() * (window.innerHeight - 2 * margin)
@@ -48,15 +38,18 @@ function getRandomPosition() {
  */
 function updateMosquitoPositions() {
     const mosquitoes = document.querySelectorAll('.mosquito');
-    
+
     mosquitoes.forEach(mosquito => {
-        const { x, y } = getRandomPosition();
-        
+        const {
+            x,
+            y
+        } = getRandomPosition();
+
         // Apply smooth transition
         mosquito.style.transition = 'all 2s ease-in-out';
         mosquito.style.left = `${x}px`;
         mosquito.style.top = `${y}px`;
-        
+
         // Random rotation for more natural movement
         const rotation = Math.random() * 360;
         mosquito.style.transform = `rotate(${rotation}deg)`;
@@ -77,16 +70,16 @@ function handleResize() {
 function initializePageEffects() {
     // Set initial background
     setRandomBackground();
-    
+
     // Position mosquitoes initially
     updateMosquitoPositions();
-    
+
     // Start mosquito movement interval
-    setInterval(updateMosquitoPositions, MOSQUITO_CONFIG.updateInterval);
-    
+    setInterval(updateMosquitoPositions, 4000); // Use a constant if needed
+
     // Add resize handler
     window.addEventListener('resize', handleResize);
-    
+
     // Add hover effect for main circle
     const mainCircle = document.querySelector('.main-circle');
     if (mainCircle) {
@@ -94,7 +87,7 @@ function initializePageEffects() {
             const rect = mainCircle.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
-            
+
             // Create subtle gradient movement effect
             mainCircle.style.background = `
                 radial-gradient(
@@ -104,7 +97,7 @@ function initializePageEffects() {
                 )
             `;
         });
-        
+
         mainCircle.addEventListener('mouseleave', () => {
             mainCircle.style.background = 'rgba(255, 255, 255, 0.15)';
         });

@@ -1,176 +1,303 @@
-/* General Styling */
+/* General Styles */
 body {
-    font-family: 'Inter', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    overflow: hidden;
+    background-color: black;
+    /* Consider a subtle background image here */
+    font-family: 'Inter', Arial, sans-serif;
+    min-height: 100vh;
     display: flex;
+    /* Center the content vertically and horizontally */
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    color: #fff;
+    color: white;
+    overflow: hidden;
+    transition: background-image 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    opacity: 1;
 }
 
-/* Main Circle Styling */
+/* Main Container Styles */
+.main-container {
+    /* Styles for the new wrapper */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Center content in the container */
+    justify-content: center;
+    width: 80%;
+    /* Adjust as needed */
+    max-width: 800px;
+    /* Limit width on larger screens */
+    background: rgba(255, 255, 255, 0.1);
+    /* Glassmorphism background */
+    backdrop-filter: blur(10px);
+    /* Add blur effect */
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    /* Subtle shadow */
+}
+
+/* Main Circle Styles */
 .main-circle {
     position: relative;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(8px);
-    border: 2px solid rgba(255, 255, 255, 0.4);
-    border-radius: 50%;
-    width: 450px;
-    height: 450px;
+    /* For gradient positioning */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    transition: all 0.4s ease;
-    padding: 2rem;
+    /* Center text */
+    padding: 2em;
+    /* Use em for font-relative spacing */
+    border-radius: 50%;
+    /* Make it a circle */
+    width: 80%;
+    /* Adjust as needed */
+    max-width: 500px;
+    /* Limit width */
+    background: rgba(255, 255, 255, 0.15);
+    /* Slightly stronger background */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow */
+    transition: background 0.3s ease;
+    /* Smooth background transition */
 }
 
-.main-circle:hover {
-    transform: scale(1.02);
-    border-color: rgba(255, 255, 255, 0.6);
-}
-
-.main-circle h1 {
-    font-size: 2em;
+.main-title {
+    font-size: 2.5em;
+    /* Larger title */
+    margin-bottom: 0.5em;
+    /* Spacing below title */
     color: #fff;
-    margin-bottom: 1.5rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.main-circle p {
+.main-description {
     font-size: 1.1em;
     line-height: 1.6;
-    max-width: 80%;
-    margin-bottom: 2rem;
+    color: rgba(255, 255, 255, 0.9);
+    /* Slightly lighter text */
+    margin-bottom: 1em;
 }
 
-/* Navigation Circles */
-.nav-circles {
+/* Navigation Styles */
+.navigation {
     display: flex;
-    gap: 1.5rem;
-    flex-wrap: wrap;
     justify-content: center;
-    margin-top: 2rem;
+    /* Space links evenly */
+    gap: 1em;
+    /* Use gap for spacing */
+    margin-top: 1.5em;
+    /* Spacing above nav */
 }
 
-.nav-circle {
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(4px);
-    border: 2px solid rgba(255, 255, 255, 0.4);
-    border-radius: 50%;
-    width: 90px;
-    height: 90px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+.nav-link {
     color: #fff;
-    font-weight: bold;
     text-decoration: none;
-    transition: all 0.3s ease;
-    font-size: 0.9em;
-    padding: 0.5rem;
-}
-
-.nav-circle:hover {
-    transform: scale(1.1);
-    background: rgba(255, 255, 255, 0.3);
-    border-color: rgba(255, 255, 255, 0.6);
-}
-
-/* Profile Picture Bubble */
-.profile-bubble {
-    position: fixed;
-    left: 40px;
-    top: 40px;
-    width: 300px;    /* Increased from original size but not as large as previous suggestion */
-    height: 300px;   /* Increased from original size but not as large as previous suggestion */
+    padding: 0.75em 1.25em;
+    border-radius: 25px;
     background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(8px);
-    border: 3px solid rgba(255, 255, 255, 0.5);
+    /* More pronounced background */
+    transition: background 0.3s ease, transform 0.2s ease-in-out;
+}
+
+.nav-link:hover {
+    background: rgba(255, 255, 255, 0.3);
+    /* Darker on hover */
+    transform: scale(1.05);
+    /* Slight scale up */
+}
+
+/* Profile Bubble Styles */
+.profile-bubble {
+    position: absolute;
+    /* Position absolutely */
+    top: 20px;
+    /* Adjust as needed */
+    right: 20px;
+    /* Adjust as needed */
+    width: 150px;
+    /* Fixed width */
+    height: 150px;
     border-radius: 50%;
     overflow: hidden;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease;
-    animation: jitter 6s infinite alternate ease-in-out;
+    /* Clip image to circle */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* More noticeable shadow */
+    transition: transform 0.3s ease-in-out;
 }
 
 .profile-bubble:hover {
-    transform: scale(1.05);
-    border-color: rgba(255, 255, 255, 0.8);
+    transform: scale(1.1);
+    /* Scale up on hover */
 }
 
-.profile-bubble img {
+.profile-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    /* Cover the area */
 }
 
-/* Jitter Animation */
-@keyframes jitter {
-    0% { transform: translate(0, 0); }
-    50% { transform: translate(-6px, 6px); }
-    100% { transform: translate(6px, -6px); }
-}
-
-/* Mosquito Animation */
+/* Mosquito Styles */
 .mosquito {
     position: absolute;
-    width: 20px;
-    height: 20px;
-    background: url('images/mosquito.png') no-repeat center center;
-    background-size: cover;
-    opacity: 0.7;
-    filter: brightness(1.2);
-    animation: fly 12s linear infinite;
+    width: 50px;
+    height: 50px;
+    background-image: url('images/mosquito.png');
+    /* Updated path */
+    background-size: contain;
+    /* Keep aspect ratio */
+    opacity: 0.8;
+    /* Slightly transparent */
+    animation: fly 5s linear infinite;
+    /* Continuous animation */
+}
+
+.mosquito-one {
+    top: 10%;
+    left: 10%;
+    animation-delay: 0.5s;
+    /* Stagger animation */
+}
+
+.mosquito-two {
+    top: 70%;
+    right: 15%;
+    animation-delay: 2s;
+    /* Stagger animation */
 }
 
 @keyframes fly {
-    0% { transform: translate(0, 0) rotate(0deg) scale(1); }
-    25% { transform: translate(50px, -50px) rotate(45deg) scale(0.9); }
-    50% { transform: translate(100px, 50px) rotate(90deg) scale(1.1); }
-    75% { transform: translate(-50px, -100px) rotate(135deg) scale(0.95); }
-    100% { transform: translate(0, 0) rotate(180deg) scale(1); }
-}
-
-/* Copyright Text */
-.copyright {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: #fff;
-    font-size: 0.9em;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .main-circle {
-        width: 90vw;
-        height: 90vw;
-        max-width: 450px;
-        max-height: 450px;
+    0% {
+        transform: rotate(0deg);
     }
 
-    .nav-circle {
-        width: 70px;
-        height: 70px;
-        font-size: 0.8em;
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Copyright Styles */
+.copyright {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    font-size: 0.8em;
+    color: rgba(255, 255, 255, 0.6);
+    /* Faded text */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .main-container {
+        width: 95%;
+        /* Wider on small screens */
+        padding: 1em;
+    }
+
+    .main-circle {
+        width: 90%;
+        /* Wider circle */
+        padding: 1.5em;
+    }
+
+    .main-title {
+        font-size: 2em;
+        /* Smaller title */
+    }
+
+    .navigation {
+        flex-direction: column;
+        /* Stack links vertically */
+        align-items: center;
+        gap: 0.5em;
+        /* Less gap */
     }
 
     .profile-bubble {
-        width: 100px;
-        height: 100px;
-        left: 20px;
-        top: 20px;
+        width: 120px;
+        height: 120px;
+        top: 10px;
+        right: 10px;
+    }
+
+    .mosquito {
+        width: 40px;
+        height: 40px;
+    }
+}
+/* Additions for Photography Page */
+
+.photography-container {
+    width: 80%;
+    /* Adjust as needed */
+    max-width: 1200px;
+    margin: 50px auto;
+    /* Center the container */
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.photography-title {
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    /* Responsive grid */
+    gap: 15px;
+    /* Spacing between photos */
+}
+
+.photo-item {
+    display: block;
+    /* Ensure anchor fills the space */
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    /* 1:1 aspect ratio */
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.photo-item:hover {
+    transform: scale(1.05);
+}
+
+.photo-item img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Cover the space */
+}
+
+/* Responsive adjustments for the gallery */
+@media (max-width: 768px) {
+    .photo-gallery {
+        grid-template-columns: 1fr;
+        /* One column on small screens */
+    }
+
+    .photography-container {
+        width: 95%;
+        margin: 20px auto;
+    }
+
+    .photography-title {
+        font-size: 2em;
     }
 }
