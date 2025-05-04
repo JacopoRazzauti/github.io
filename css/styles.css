@@ -235,7 +235,7 @@ section#home {
     position: absolute;
     width: 50px;
     height: 50px;
-    background-image: url('images/mosquito.png'); /* Ensure path is correct */
+    background-image: url('images/background/stars.jpg'); 
     background-size: contain;
     opacity: 0.8;
     animation: fly 5s linear infinite;
