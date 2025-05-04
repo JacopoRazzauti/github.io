@@ -1,0 +1,80 @@
+/* Additions for Photography Page - Moved from original styles.css */
+/* Note: Some general styles like body background or menu might be in styles.css or biography.css */
+
+.photography-container {
+    width: 80%;
+    /* Adjust as needed */
+    max-width: 1200px;
+    margin: 50px auto;
+    /* Center the container */
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.photography-title {
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    /* Responsive grid */
+    gap: 15px;
+    /* Spacing between photos */
+}
+
+.photo-item {
+    display: block;
+    /* Ensure anchor fills the space */
+    width: 100%;
+    /* Removed height: 0 and padding-bottom: 100% for simpler aspect ratio handling if images are consistent */
+    /* If your images have varying aspect ratios and you need consistent grid items, 
+       you might need to reinstate height: 0 and padding-bottom and adjust object-fit */
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    /* Add a fixed height or use flex/grid item properties for more control */
+    height: 250px; /* Example fixed height - adjust as needed */
+}
+
+.photo-item:hover {
+    transform: scale(1.05);
+}
+
+.photo-item img {
+    position: absolute; /* Position absolutely within .photo-item */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the space, crops if aspect ratio differs */
+}
+
+/* Responsive adjustments for the gallery - Moved from original styles.css */
+@media (max-width: 768px) {
+    .photo-gallery {
+        grid-template-columns: 1fr;
+        /* One column on small screens */
+    }
+
+    .photography-container {
+        width: 95%;
+        margin: 20px auto;
+    }
+
+    .photography-title {
+        font-size: 2em;
+    }
+     .photo-item {
+        height: 200px; /* Adjust height for smaller screens */
+    }
+}

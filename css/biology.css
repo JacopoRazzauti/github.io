@@ -1,0 +1,154 @@
+/* Keep all previous styles and add these new ones */
+/* Note: Some general styles like menu might still be in styles.css or biography.css */
+
+/* Container for all sections */
+.container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Row containers */
+.row {
+    display: flex;
+    flex: 1;
+    position: relative;
+}
+
+/* Dividers */
+.vertical-divider {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: white;
+    transform: translateX(-50%);
+}
+
+.horizontal-divider {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: white;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+
+.vertical-divider::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: white;
+    animation: wave 8s ease-in-out infinite;
+}
+
+/* Section Styling */
+.section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    transition: flex 0.5s ease;
+    z-index: 1;
+}
+
+.section.expanded {
+    flex: 3;
+}
+
+.section-text {
+    color: white;
+    font-size: 4em;
+    font-weight: bold;
+    transition: all 0.5s ease;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    z-index: 2;
+}
+
+.section:hover .section-text {
+    font-size: 5em;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+}
+
+@keyframes wave {
+    0% { clip-path: path('M 0 0 Q 0 250 0 500'); }
+    25% { clip-path: path('M 0 0 Q 50 250 0 500'); }
+    50% { clip-path: path('M 0 0 Q -50 250 0 500'); }
+    75% { clip-path: path('M 0 0 Q 50 250 0 500'); }
+    100% { clip-path: path('M 0 0 Q 0 250 0 500'); }
+}
+
+/* Additional styles added to biology.html inline style */
+.section {
+    overflow: hidden;
+    position: relative;
+}
+
+.content-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    padding: 20px;
+    visibility: hidden;
+}
+
+.section.expanded .content-wrapper {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0.3s;
+}
+
+.content-text {
+    color: white;
+    font-size: 1.2em;
+    line-height: 1.6;
+    max-width: 80%;
+    text-align: left;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+    z-index: 3;
+}
+
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 1;
+}
+
+.section.expanded .background-image {
+    opacity: 0.3;
+}
+
+.section-text {
+    position: relative;
+    z-index: 2;
+    transition: transform 0.5s ease, font-size 0.5s ease;
+}
+
+.section.expanded .section-text {
+    transform: translateX(-30%);
+}
