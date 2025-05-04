@@ -48,7 +48,88 @@ section {
 }
 
 section#home {
-    /* Styles for the Home section */
+    position: relative; /* To allow absolute positioning of elements within */
+    /* Center content both horizontally and vertically (already set in the general section styles) */
+    text-align: center; /* Ensure text within is centered */
+    /* No specific background color needed as the body gradient will show */
+}
+
+.main-circle {
+    background: rgba(255, 255, 255, 0.15); /* Glassmorphism background */
+    backdrop-filter: blur(10px);
+    border-radius: 50%;
+    padding: 2em;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease;
+    z-index: 2; /* Ensure it's above the background */
+    background: none; /* Remove the oval background */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Add a little shade */
+}
+
+.main-title {
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.main-description {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 1em;
+}
+
+.profile-bubble {
+    position: absolute;
+    top: 20px; /* Adjust as needed */
+    right: 20px; /* Adjust as needed */
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000; /* Ensure it's above the menu */
+}
+
+.profile-bubble:hover {
+    transform: scale(1.1);
+}
+
+.profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.mosquito {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-image: url('images/background/stars.jpg'); /* Ensure path is correct */
+    background-size: contain;
+    opacity: 0.8;
+    animation: fly 5s linear infinite;
+}
+
+.mosquito-one {
+    top: 10%;
+    left: 10%;
+    animation-delay: 0.5s;
+}
+
+.mosquito-two {
+    top: 70%;
+    right: 15%;
+    animation-delay: 2s;
+}
+
+@keyframes fly {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 /* Add styles for other sections (biography, biology, cv, contact) */
@@ -173,87 +254,4 @@ section#home {
     margin-left: auto;
     font-size: 0.8em;
     opacity: 0.7;
-}
-
-/* Home Section Styles */
-section#home {
-    position: relative; /* To allow absolute positioning of elements within */
-    /* Center content both horizontally and vertically (already set in the general section styles) */
-    text-align: center; /* Ensure text within is centered */
-    /* No specific background color needed as the body gradient will show */
-}
-
-.main-circle {
-    background: rgba(255, 255, 255, 0.15); /* Glassmorphism background */
-    backdrop-filter: blur(10px);
-    border-radius: 50%;
-    padding: 2em;
-    width: 80%;
-    max-width: 500px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: background 0.3s ease;
-    z-index: 2; /* Ensure it's above the background */
-}
-
-.main-title {
-    font-size: 2.5em;
-    margin-bottom: 0.5em;
-    color: #fff;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.main-description {
-    font-size: 1.1em;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 1em;
-}
-
-.profile-bubble {
-    position: absolute;
-    top: 20px; /* Adjust as needed */
-    right: 20px; /* Adjust as needed */
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease-in-out;
-}
-
-.profile-bubble:hover {
-    transform: scale(1.1);
-}
-
-.profile-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.mosquito {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    background-image: url('images/background/stars.jpg'); /* Ensure path is correct */
-    background-size: contain;
-    opacity: 0.8;
-    animation: fly 5s linear infinite;
-}
-
-.mosquito-one {
-    top: 10%;
-    left: 10%;
-    animation-delay: 0.5s;
-}
-
-.mosquito-two {
-    top: 70%;
-    right: 15%;
-    animation-delay: 2s;
-}
-
-@keyframes fly {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
 }
