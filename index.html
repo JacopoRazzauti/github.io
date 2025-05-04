@@ -5,39 +5,268 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jacopo Razzauti</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/ocean.css">
+    <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <script defer src="js/script.js"></script>
-    <script defer src="js/ocean.js"></script>
+    <script defer src="script.js"></script>
+    <style>
+        /* Basic styling for layout - will be moved to styles.css */
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            background-color: #000;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            padding: 1em;
+            display: flex;
+            justify-content: center;
+            z-index: 100;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 1em;
+            padding: 0.5em 1em;
+            border-radius: 25px;
+            transition: background 0.3s ease;
+        }
+
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        section {
+            padding: 80px 20px;
+            min-height: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        section#home {
+            min-height: 100vh;
+        }
+
+        /* More section styles will be added */
+    </style>
 </head>
 
 <body>
-    <div class="main-container">
-        <div class="main-circle">
-            <h1 class="main-title">Greetings!</h1>
-            <p class="main-description">
-                This is my personal webpage. In case you are interested in who I am or what I do, feel free to explore
-                more. P.S. All photos and pictures are mine unless otherwise specified
-            </p>
-            <nav class="navigation">
-                <a href="pages/biography.html" class="nav-link">Bio(graphy)</a>
-                <a href="pages/biology.html" class="nav-link">Bio(logy)</a>
-                <a href="pages/cv.html" class="nav-link">CV</a>
-                <a href="pages/contacts.html" class="nav-link">Reach out</a>
-                <a href="pages/photography.html" class="nav-link">Photography</a>
-            </nav>
+    <header>
+        <nav id="mainNav">
+            <a href="#home">Home</a>
+            <a href="#biography">Bio(graphy)</a>
+            <a href="#biology">Bio(logy)</a>
+            <a href="#cv">CV</a>
+            <a href="#contact">Reach Out</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <div class="main-circle">
+                <h1 class="main-title">Greetings!</h1>
+                <p class="main-description">
+                    This is my personal webpage. In case you are interested in who I am or what I do, feel free to explore more.
+                    P.S. All photos and pictures are mine unless otherwise specified
+                </p>
+            </div>
+            <div class="profile-bubble">
+                <img src="images/top1.jpg" alt="Jacopo Razzauti" class="profile-image">
+            </div>
+            <div class="mosquito mosquito-one"></div>
+            <div class="mosquito mosquito-two"></div>
+        </section>
+
+        <section id="biography">
+            <h2>Bio(graphy)</h2>
+            <div class="timeline-container">
+                <div class="timeline">
+                    <div class="milestone">
+                        <div class="milestone-content">
+                            <div class="year">2023</div>
+                            <div class="description">Achieved PADI Open Water Diver certification.</div>
+                        </div>
+                        <div class="milestone-image-container">
+                            <div class="milestone-image">
+                                <img src="images/biography/profile3.jpg" alt="PADI Certification">
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="milestone">
+                        <div class="milestone-content">
+                            <div class="year">2022-2024</div>
+                            <div class="description">Mars Society Missions (Mars Desert Research Station, Utah).</div>
+                        </div>
+                    </div>
+        
+                    <div class="milestone">
+                        <div class="milestone-content">
+                            <div class="year">2022</div>
+                            <div class="description">Publication in <em>Nature</em>: "<a href="https://www.nature.com/articles/s41586-022-05480-9" target="_blank" rel="noopener noreferrer">The pupal moulting fluid has evolved social functions in ants.</a>"</div>
+                        </div>
+                        <div class="milestone-image-container">
+                            <div class="milestone-image">
+                                <img src="images/biography/cover.jpg" alt="Nature Journal Cover">
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="milestone">
+                        <div class="milestone-content">
+                            <div class="year">2022-Present</div>
+                            <div class="description">PhD Research in Laboratory of Neurogenetics and Behavior at Rockefeller University.</div>
+                        </div>
+                        <div class="milestone-image-container">
+                            <div class="milestone-image">
+                                <img src="images/biography/profile1.jpg" alt="PhD Research at Rockefeller University">
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="milestone">
+                        <div class="milestone-content">
+                            <div class="year">2021-Present</div>
+                            <div class="description">Joined The Rockefeller University, NY.</div>
+                        </div>
+                    </div>
+        
+                    <div class="milestone">
+                        <div class="milestone-content">
+                            <div class="year">2019</div>
+                            <div class="description">AMGEN Scholar, Max Planck Institute of Neurobiology.</div>
+                        </div>
+                    </div>
+        
+                    <div class="milestone">
+                        <div class="milestone-content">
+                            <div class="year">2017-2021</div>
+                            <div class="description">BSc in Neurosciences, Graduated with First Class (Honours), University of Dundee, Scotland.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="bio-box">
+                <p>This timeline captures key moments in my academic and research journey. Currently, I am a PhD student at The Rockefeller University specializing on the neurobiological and behavioral basis of mosquito swarming and repellency. I am interested in anything related to animal tracking, mcomputer vision, sensory ecology, and decision making in invertebrates. In other words, I spend half of my time looking at bug’s brains and the other half fixing bugs in my code.</p>
+            </div>
+        </section>
+
+        <section id="biology">
+            <h2>Bio(logy)</h2>
+            <div class="container">
+                <div class="row">
+                    <div class="section" id="brain" onclick="toggleExpand(this, 'behavior')">
+                        <div class="section-text">BRAIN</div>
+                        <img src="images/biology/image.png" alt="Brain Research" class="background-image">
+                        <div class="content-wrapper">
+                            <div class="content-text">
+                                My research focuses on understanding the neural mechanisms underlying insect behavior,
+                                with a particular emphasis on chemosensation. In particular I am interested in how neurons sense
+                                and combine stimuli of opposite valence to guide complex behaviors such as host-seeking.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vertical-divider"></div>
+                    <div class="section" id="behavior" onclick="toggleExpand(this, 'brain')">
+                        <div class="section-text">BEHAVIOR</div>
+                        <img src="images/biology/behavior.png" alt="Behavior Research" class="background-image">
+                        <div class="content-wrapper">
+                            <div class="content-text">
+                                Okay, I consider behavior the most interesting aspect of my research. I am particularly
+                                interested in quantitative, fine-grained analysis of freely moving animals. I mainly use
+                                machine learning-based tools to detect, track and analyze the behavior of multiple animals.
+                                I support the idea that a closer look at behavior can provide insights into the neural basis of
+                                decision-making, and that behavior on its own right its a powerful tool to understand not only the brain,
+                                but the adaptive processes that sculpted it over million of years of evolution.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="horizontal-divider"></div>
+        
+                <div class="row">
+                    <div class="section" id="tools" onclick="toggleExpand(this, 'fieldwork')">
+                        <div class="section-text">TOOLS</div>
+                        <div class="content-wrapper">
+                            <div class="content-text">
+                                I am a fan of DIY solutions that provide high-quality data. I have developed a series of
+                                custom-made tools to study insect behavior, including a low-cost, high-resolution tracking system.
+                                Where possible I support a frugal approach to science, and I am always happy to share my tools and
+                                code with the community. I believe that science should be open and accessible to everyone. This might
+                                sound like a cliché, but I truly believe that open-source tools and data sharing are the future of science.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vertical-divider"></div>
+                    <div class="section" id="fieldwork" onclick="toggleExpand(this, 'tools')">
+                        <div class="section-text">FIELDWORK</div>
+                        <img src="images/biology/photo_5886406611252135549_y.jpg" alt="Fieldwork Research" class="background-image">
+                        <div class="content-wrapper">
+                            <div class="content-text">
+                                Since my undergraduate years, I have tried to gain as much fieldwork experience as possible. I have worked
+                                in remote regions such as the dry forest of North Madagascar and the Utah Desert, where I conducted biological
+                                and ecological surveys. I have been part of thre consecutive Mars Society expeditions aimed at surveying the biodiversity
+                                of the Utah Desert surrounding the Mars Desert Research Station. I think that fieldwork is a important now more than ever as
+                                the rate of extinction is increasing, and documenting biodiversity has become crucial. Advancements in technology have
+                                made quantitative research in the field more accessible, and I am excited to see how the field of ecology will meet the field of
+                                neuroscience in the near future.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cv">
+            <h2>CV</h2>
+            <div class="pdf-container">
+                <iframe class="pdf-viewer" src="documents/CV.pdf" type="application/pdf"></iframe>
+            </div>
+        </section>
+
+        <section id="contact">
+    <h2>Reach Out</h2>
+    <div class="contact-container">
+        <div class="contact-header">
+            <h1>Get in Touch!</h1>
+            <p>Whether is for a specific question or to chat about animal behavior, feel free to reach out using one of
+                the following links</p>
         </div>
-
-        <div class="profile-bubble">
-            <img src="images/profile/top1.jpg" alt="Jacopo Razzauti" class="profile-image">
+        <div class="contact-links">
+            <a href="mailto:jrazzauti@rockefeller.edu" class="contact-item">
+                <i class="fa-solid fa-envelope"></i>
+                <span>jrazzauti@rockefeller.edu</span>
+                <span class="label">Email</span>
+            </a>
+            <a href="https://www.linkedin.com/in/jacopo-razzauti-3312a418b/" target="_blank" class="contact-item">
+                <i class="fa-brands fa-linkedin"></i>
+                <span>Jacopo Razzauti</span>
+                <span class="label">LinkedIn</span>
+            </a>
+            <a href="https://x.com/JacopoRazzauti" target="_blank" class="contact-item">
+                <i class="fa-brands fa-x-twitter"></i>
+                <span>@JacopoRazzauti</span>
+                <span class="label">Twitter (or whatever it is called now)</span>
+            </a>
+            <a href="https://github.com/JacopoRazzauti" target="_blank" class="contact-item">
+                <i class="fa-brands fa-github"></i>
+                <span>JacopoRazzauti</span>
+                <span class="label">GitHub</span>
+            </a>
         </div>
-
-        <div class="mosquito mosquito-one"></div>
-        <div class="mosquito mosquito-two"></div>
-
-        <p class="copyright">&copy; 2024 Jacopo Razzauti</p>
     </div>
-</body>
-
-</html>
+</section>

@@ -1,81 +1,203 @@
 /* General Styles */
 body {
+    font-family: 'Inter', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: black;
-    /* The random background image is set by script.js now */
-    font-family: 'Inter', Arial, sans-serif;
-    min-height: 100vh;
-    display: flex;
-    /* Center the content vertically and horizontally */
-    justify-content: center;
-    align-items: center;
-    color: white;
-    overflow: hidden; /* Keep overflow hidden for the main landing page effect */
-    /* Transition properties might be handled by the script */
-    transition: background-image 0.5s ease-in-out, opacity 0.5s ease-in-out;
-    opacity: 1; /* Initial opacity */
+    color: #fff; /* Default text color to white */
+    background: linear-gradient(to bottom, #94B4C1, #547792, #213448); /* Vertical gradient */
+    background-attachment: fixed; /* Keep the background fixed during scrolling */
+    overflow-x: hidden; /* Prevent horizontal scrollbar */
 }
 
-/* Ensure loaded state handles initial visibility if needed by script.js */
-body.loaded {
-    opacity: 1;
-}
-
-
-/* Main Container Styles */
-.main-container {
-    /* Styles for the new wrapper */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* Center content in the container */
-    justify-content: center;
-    width: 80%;
-    /* Adjust as needed */
-    max-width: 800px;
-    /* Limit width on larger screens */
+/* Navigation Menu */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     background: rgba(255, 255, 255, 0.1);
-    /* Glassmorphism background */
-    backdrop-filter: blur(10px);
-    /* Add blur effect */
-    border-radius: 15px;
-    padding: 20px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    /* Subtle shadow */
+    backdrop-filter: blur(8px);
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+    z-index: 100;
 }
 
-/* Main Circle Styles */
-.main-circle {
-    position: relative;
-    /* For gradient positioning */
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 1em;
+    padding: 0.5em 1em;
+    border-radius: 25px;
+    transition: background 0.3s ease;
+}
+
+nav a:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Section Styles */
+section {
+    padding: 80px 20px;
+    min-height: 100vh; /* Ensure sections take full viewport height */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    /* Center text */
-    padding: 2em;
-    /* Use em for font-relative spacing */
-    border-radius: 50%;
-    /* Make it a circle */
+}
+
+section#home {
+    /* Styles for the Home section */
+}
+
+/* Add styles for other sections (biography, biology, cv, contact) */
+
+/* Example Timeline Styles (adapt from your biography.css) */
+.timeline-container {
+    /* Your timeline styles here */
+}
+
+/* Example Bio Box Styles (adapt from your biography.css) */
+.bio-box {
+    /* Your bio box styles here */
+    background: rgba(0, 0, 0, 0.5); /* Example background for better readability */
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.bio-box p {
+    color: #eee;
+}
+
+/* Example Biology Section Styles (adapt from your biology.css) */
+.container {
+    /* Your biology container styles here */
+}
+
+.section-text {
+    color: #fff; /* Ensure text over the gradient is white */
+}
+
+.content-text {
+    color: #eee; /* Slightly softer white for content */
+    background: rgba(0, 0, 0, 0.6); /* Example background for readability */
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 10px;
+    text-align: left;
+    max-width: 80%;
+}
+
+/* PDF Container Styles */
+.pdf-container {
+    position: relative; /* Changed from fixed to relative for single-page layout */
     width: 80%;
-    /* Adjust as needed */
+    max-width: 800px;
+    height: 60vh; /* Adjust height as needed */
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    margin-top: 20px; /* Add some spacing */
+}
+
+.pdf-viewer {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Contact Container Styles */
+.contact-container {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    padding: 30px;
     max-width: 500px;
-    /* Limit width */
-    background: rgba(255, 255, 255, 0.15);
-    /* Slightly stronger background */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    /* Subtle shadow */
+    width: 90%;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    margin-top: 20px;
+    text-align: center;
+}
+
+.contact-header h1 {
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.contact-header p {
+    color: #eee;
+}
+
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+    align-items: center;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 8px;
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     transition: background 0.3s ease;
-    /* Smooth background transition */
+    width: 100%;
+    max-width: 400px;
+}
+
+.contact-item:hover {
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.contact-item i {
+    font-size: 1.2em;
+    margin-right: 10px;
+    width: 25px;
+    text-align: center;
+}
+
+.contact-item span {
+    font-size: 1em;
+}
+
+.contact-item .label {
+    margin-left: auto;
+    font-size: 0.8em;
+    opacity: 0.7;
+}
+
+/* Home Section Styles */
+section#home {
+    position: relative; /* To allow absolute positioning of elements within */
+    /* Center content both horizontally and vertically (already set in the general section styles) */
+    text-align: center; /* Ensure text within is centered */
+    /* No specific background color needed as the body gradient will show */
+}
+
+.main-circle {
+    background: rgba(255, 255, 255, 0.15); /* Glassmorphism background */
+    backdrop-filter: blur(10px);
+    border-radius: 50%;
+    padding: 2em;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease;
+    z-index: 2; /* Ensure it's above the background */
 }
 
 .main-title {
     font-size: 2.5em;
-    /* Larger title */
     margin-bottom: 0.5em;
-    /* Spacing below title */
     color: #fff;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
@@ -84,148 +206,54 @@ body.loaded {
     font-size: 1.1em;
     line-height: 1.6;
     color: rgba(255, 255, 255, 0.9);
-    /* Slightly lighter text */
     margin-bottom: 1em;
 }
 
-/* Navigation Styles (Could be moved to a common file if used elsewhere) */
-/* Note: The menu icon and side nav styles from biography.css are also needed site-wide, 
-   consider consolidating these navigation styles */
-.navigation {
-    display: flex;
-    justify-content: center;
-    /* Space links evenly */
-    gap: 1em;
-    /* Use gap for spacing */
-    margin-top: 1.5em;
-    /* Spacing above nav */
-}
-
-.nav-link {
-    color: #fff;
-    text-decoration: none;
-    padding: 0.75em 1.25em;
-    border-radius: 25px;
-    background: rgba(255, 255, 255, 0.2);
-    /* More pronounced background */
-    transition: background 0.3s ease, transform 0.2s ease-in-out;
-}
-
-.nav-link:hover {
-    background: rgba(255, 255, 255, 0.3);
-    /* Darker on hover */
-    transform: scale(1.05);
-    /* Slight scale up */
-}
-
-/* Profile Bubble Styles */
 .profile-bubble {
     position: absolute;
-    /* Position absolutely */
-    top: 20px;
-    /* Adjust as needed */
-    right: 20px;
-    /* Adjust as needed */
+    top: 20px; /* Adjust as needed */
+    right: 20px; /* Adjust as needed */
     width: 150px;
-    /* Fixed width */
     height: 150px;
     border-radius: 50%;
     overflow: hidden;
-    /* Clip image to circle */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    /* More noticeable shadow */
     transition: transform 0.3s ease-in-out;
 }
 
 .profile-bubble:hover {
     transform: scale(1.1);
-    /* Scale up on hover */
 }
 
 .profile-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* Cover the area */
 }
 
-/* Mosquito Styles */
 .mosquito {
     position: absolute;
     width: 50px;
     height: 50px;
-    /* Updated path for the mosquito image */
-    background-image: url('../images/biology/mosquito.png');
+    background-image: url('images/mosquito.png'); /* Ensure path is correct */
     background-size: contain;
-    /* Keep aspect ratio */
     opacity: 0.8;
-    /* Slightly transparent */
-    /* Animation handled by script.js */
+    animation: fly 5s linear infinite;
 }
 
-/* Initial positions handled by script.js */
-/* @keyframes fly is likely not needed here if position is set by JS */
-
-/* Copyright Styles */
-.copyright {
-    position: fixed;
-    bottom: 10px;
-    left: 10px;
-    font-size: 0.8em;
-    color: rgba(255, 255, 255, 0.6);
-    /* Faded text */
+.mosquito-one {
+    top: 10%;
+    left: 10%;
+    animation-delay: 0.5s;
 }
 
-/* Media Queries for Responsiveness (Keep as is, applies to index page elements) */
-@media (max-width: 768px) {
-    .main-container {
-        width: 95%;
-        /* Wider on small screens */
-        padding: 1em;
-    }
-
-    .main-circle {
-        width: 90%;
-        /* Wider circle */
-        padding: 1.5em;
-    }
-
-    .main-title {
-        font-size: 2em;
-        /* Smaller title */
-    }
-
-    .navigation {
-        flex-direction: column;
-        /* Stack links vertically */
-        align-items: center;
-        gap: 0.5em;
-        /* Less gap */
-    }
-
-    .profile-bubble {
-        width: 120px;
-        height: 120px;
-        top: 10px;
-        right: 10px;
-    }
-
-    .mosquito {
-        width: 40px;
-        height: 40px;
-    }
+.mosquito-two {
+    top: 70%;
+    right: 15%;
+    animation-delay: 2s;
 }
 
-/*
-   ------------------------------------------------------------------
-   Photography Page Styles - REMOVED from here and moved to css/photography.css
-   ------------------------------------------------------------------
-
-.photography-container { ... }
-.photography-title { ... }
-.photo-gallery { ... }
-.photo-item { ... }
-.photo-item:hover { ... }
-.photo-item img { ... }
-@media (max-width: 768px) { ... photography styles ... }
-*/
+@keyframes fly {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
