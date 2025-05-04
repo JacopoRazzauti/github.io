@@ -104,14 +104,12 @@
                             </div>
                         </div>
                     </div>
-        
                     <div class="milestone">
                         <div class="milestone-content">
                             <div class="year">2022-2024</div>
                             <div class="description">Mars Society Missions (Mars Desert Research Station, Utah).</div>
                         </div>
                     </div>
-        
                     <div class="milestone">
                         <div class="milestone-content">
                             <div class="year">2022</div>
@@ -123,7 +121,6 @@
                             </div>
                         </div>
                     </div>
-        
                     <div class="milestone">
                         <div class="milestone-content">
                             <div class="year">2022-Present</div>
@@ -135,21 +132,18 @@
                             </div>
                         </div>
                     </div>
-        
                     <div class="milestone">
                         <div class="milestone-content">
                             <div class="year">2021-Present</div>
                             <div class="description">Joined The Rockefeller University, NY.</div>
                         </div>
                     </div>
-        
                     <div class="milestone">
                         <div class="milestone-content">
                             <div class="year">2019</div>
                             <div class="description">AMGEN Scholar, Max Planck Institute of Neurobiology.</div>
                         </div>
                     </div>
-        
                     <div class="milestone">
                         <div class="milestone-content">
                             <div class="year">2017-2021</div>
@@ -158,9 +152,12 @@
                     </div>
                 </div>
             </div>
-        
             <div class="bio-box">
-                <p>This timeline captures key moments in my academic and research journey. Currently, I am a PhD student at The Rockefeller University specializing on the neurobiological and behavioral basis of mosquito swarming and repellency. I am interested in anything related to animal tracking, mcomputer vision, sensory ecology, and decision making in invertebrates. In other words, I spend half of my time looking at bug’s brains and the other half fixing bugs in my code.</p>
+                <p>This timeline captures key moments in my academic and research journey. Currently, I am a PhD student at The
+                    Rockefeller University specializing on the neurobiological and behavioral basis of mosquito swarming and
+                    repellency. I am interested in anything related to animal tracking, mcomputer vision, sensory ecology, and
+                    decision making in invertebrates. In other words, I spend half of my time looking at bug’s brains and the other
+                    half fixing bugs in my code.</p>
             </div>
         </section>
 
@@ -195,9 +192,7 @@
                         </div>
                     </div>
                 </div>
-        
                 <div class="horizontal-divider"></div>
-        
                 <div class="row">
                     <div class="section" id="tools" onclick="toggleExpand(this, 'fieldwork')">
                         <div class="section-text">TOOLS</div>
@@ -239,34 +234,51 @@
         </section>
 
         <section id="contact">
-    <h2>Reach Out</h2>
-    <div class="contact-container">
-        <div class="contact-header">
-            <h1>Get in Touch!</h1>
-            <p>Whether is for a specific question or to chat about animal behavior, feel free to reach out using one of
-                the following links</p>
-        </div>
-        <div class="contact-links">
-            <a href="mailto:jrazzauti@rockefeller.edu" class="contact-item">
-                <i class="fa-solid fa-envelope"></i>
-                <span>jrazzauti@rockefeller.edu</span>
-                <span class="label">Email</span>
-            </a>
-            <a href="https://www.linkedin.com/in/jacopo-razzauti-3312a418b/" target="_blank" class="contact-item">
-                <i class="fa-brands fa-linkedin"></i>
-                <span>Jacopo Razzauti</span>
-                <span class="label">LinkedIn</span>
-            </a>
-            <a href="https://x.com/JacopoRazzauti" target="_blank" class="contact-item">
-                <i class="fa-brands fa-x-twitter"></i>
-                <span>@JacopoRazzauti</span>
-                <span class="label">Twitter (or whatever it is called now)</span>
-            </a>
-            <a href="https://github.com/JacopoRazzauti" target="_blank" class="contact-item">
-                <i class="fa-brands fa-github"></i>
-                <span>JacopoRazzauti</span>
-                <span class="label">GitHub</span>
-            </a>
-        </div>
-    </div>
-</section>
+            <h2>Reach Out</h2>
+            <div class="contact-container">
+                <div class="contact-header">
+                    <h1>Get in Touch!</h1>
+                    <p>Whether is for a specific question or to chat about animal behavior, feel free to reach out using one of
+                        the following links</p>
+                </div>
+                <div class="contact-links">
+                    <a href="mailto:jrazzauti@rockefeller.edu" class="contact-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>jrazzauti@rockefeller.edu</span>
+                        <span class="label">Email</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/jacopo-razzauti-3312a418b/" target="_blank" class="contact-item">
+                        <i class="fa-brands fa-linkedin"></i>
+                        <span>Jacopo Razzauti</span>
+                        <span class="label">LinkedIn</span>
+                    </a>
+                    <a href="https://x.com/JacopoRazzauti" target="_blank" class="contact-item">
+                        <i class="fa-brands fa-x-twitter"></i>
+                        <span>@JacopoRazzauti</span>
+                        <span class="label">Twitter (or whatever it is called now)</span>
+                    </a>
+                    <a href="https://github.com/JacopoRazzauti" target="_blank" class="contact-item">
+                        <i class="fa-brands fa-github"></i>
+                        <span>JacopoRazzauti</span>
+                        <span class="label">GitHub</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Smooth scrolling function
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
